@@ -4,10 +4,15 @@
   align-items: center;
   width: 320px;
   gap: 14px;
+  max-width: 100%;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 20px;
+  }
 
   .current {
     font-style: italic;
-    color: var(--secondary-text-color);
+    color: inherit;
   }
 
   .screens {
@@ -17,12 +22,12 @@
 
     .screen {
       border-radius: 9px;
-      background-color: #F4EAE4;
+      background-color: var(--inactive-color);
       height: 3px;
       flex: 1;
       
       &.active {
-        background-color: var(--secondary-text-color);   
+        background-color: var(--active-color);
       }
     }
   }

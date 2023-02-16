@@ -2,10 +2,12 @@ import React from 'react'
 import { FormikProps, useFormik } from 'formik'
 import * as Yup from 'yup'
 import Screen1, { ValidationSchema as Screen1Validation } from '../PlanFormScreen/Screen1'
+import Screen2, { ValidationSchema as Screen2Validation } from '../PlanFormScreen/Screen2'
 
 export const planValidationSchema = 
   Yup.object({
-    ...Screen1Validation
+    ...Screen1Validation,
+    ...Screen2Validation,
   })
 
 
@@ -29,12 +31,13 @@ export type PlanFormValues = {
 }
 
 export default function PlanForm(props: { formik: FormikProps<PlanFormValues> }) {
-  const [screen, setScreen] = React.useState<number>(0)
+  const [screen, setScreen] = React.useState<number>(1)
 
   return (
     <form>
       {[
-        <Screen1 key={0} />
+        <Screen1 key={1} />,
+        <Screen2 key={2} />
       ][screen]}
     </form>
   )
