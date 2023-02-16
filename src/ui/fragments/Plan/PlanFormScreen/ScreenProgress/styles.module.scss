@@ -1,0 +1,29 @@
+.progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  gap: 14px;
+
+  .current {
+    font-style: italic;
+    color: var(--secondary-text-color);
+  }
+
+  .screens {
+    width: 100%;
+    display: flex;
+    gap: 6px;
+
+    .screen {
+      border-radius: 9px;
+      background-color: #F4EAE4;
+      height: 3px;
+      flex: 1;
+      
+      &.active {
+        background-color: var(--secondary-text-color);   
+      }
+    }
+  }
+}

@@ -17,6 +17,7 @@ export default function Screen1() {
     <PlanFormScreen
       title={<span style={{ fontSize: 64 }}>Получите свой план кетодиеты</span>}
       subtitle='Ответьте на 8 простых вопросов, и мы рассчитаем ваш индивидуальный план питания'
+      screen={1}
     >
       <div className={styles.genderSelect}>
         <GenderButton
