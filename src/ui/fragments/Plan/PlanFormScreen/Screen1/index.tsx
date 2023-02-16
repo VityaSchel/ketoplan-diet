@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import GenderButton from './GenderButton'
 import Male from '@/assets/Male.png'
 import Female from '@/assets/Female.png'
+import { useFormikContext } from 'formik'
 
 // /* { [key in keyof PlanFormValues]?: Yup.AnySchema } */ = Yup.object<Partial<Record<keyof PlanFormValues, Yup.AnySchema>>>(
 export const ValidationSchema = {
@@ -13,7 +14,9 @@ export const ValidationSchema = {
     .required()
 }
 
-export default function Screen1() {
+export default function Screen1(props: { onContinue: () => any }) {
+  const formik = useFormikContext()
+
   return (
     <PlanFormScreen
       title={<span style={{ fontSize: '1.45em' }}>Получите свой план кетодиеты</span>}
@@ -24,12 +27,18 @@ export default function Screen1() {
         <GenderButton
           image={{ src: Female, alt: 'Женщина' }}
           label='План для женщины'
-          onClick={() => {}}
+          onClick={() => {
+            formik.setFieldValue('gender', 'MALE')
+            props.onContinue()
+          }}
         />
         <GenderButton
           image={{ src: Male, alt: 'Мужчина' }}
           label='План для мужчины'
-          onClick={() => {}}
+          onClick={() => {
+            formik.setFieldValue('gender', 'FEMALE')
+            props.onContinue()
+          }}
         />
       </div>
     </PlanFormScreen>

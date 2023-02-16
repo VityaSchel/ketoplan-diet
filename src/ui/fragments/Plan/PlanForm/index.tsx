@@ -36,8 +36,8 @@ export default function PlanForm(props: { formik: FormikProps<PlanFormValues> })
   return (
     <form>
       {[
-        <Screen1 key={1} />,
-        <Screen2 key={2} formik={props.formik} />
+        <Screen1 key={1} formik={props.formik} onContinue={() => setScreen(2)} />,
+        <Screen2 key={2} formik={props.formik} onContinue={() => setScreen(3)} />
       ][screen]}
     </form>
   )

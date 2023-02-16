@@ -1,0 +1,13 @@
+.button {
+  all: unset;
+  padding: 20px;
+  background-color: var(--button-default-color);
+  color: #fff;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+
+  &:hover {
+    background-color: var(--button-default-color_dimmed);
+  }
+}

@@ -1,9 +1,11 @@
+import styles from './styles.module.scss'
 import PlanFormScreen from '@/ui/fragments/Plan/PlanFormScreen'
 import Screen2Image from '@/assets/PlanForm/Screen2.png'
 import * as Yup from 'yup'
 import Select from '@/ui/components/Select'
 import { FormikProps, useFormik } from 'formik'
 import { PlanFormValues } from '@/ui/fragments/Plan/PlanForm'
+import Button from '@/ui/components/Button'
 
 export const ValidationSchema = {
   activityInterval: Yup.string()
@@ -11,7 +13,7 @@ export const ValidationSchema = {
     .required()
 }
 
-export default function Screen2(props: { formik: FormikProps<PlanFormValues> }) {
+export default function Screen2(props: { formik: FormikProps<PlanFormValues>, onContinue: () => any }) {
   return (
     <PlanFormScreen
       title='Физическая активность'
@@ -31,6 +33,10 @@ export default function Screen2(props: { formik: FormikProps<PlanFormValues> }) 
         onChange={newValue => props.formik.setFieldValue('activityInterval', newValue)}
         multi={false}
       />
+      <div className={styles.actions}>
+        <Button variant='contained' onClick={props.onContinue}>Продолжить</Button>
+        <Button variant='text' onClick={props.onContinue}>Продолжить</Button>
+      </div>
     </PlanFormScreen>
   )
 }
