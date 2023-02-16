@@ -75,7 +75,7 @@
     width: $width;
 
     .imageContainer {
-      position: absolute;
+      position: fixed;
       top: 0;
       width: $width;
       height: 100%;
@@ -93,7 +93,7 @@
     }
 
     .screenProgressBackground {
-      position: absolute;
+      position: fixed;
       bottom: 0;
       width: inherit;
       height: 172px;
