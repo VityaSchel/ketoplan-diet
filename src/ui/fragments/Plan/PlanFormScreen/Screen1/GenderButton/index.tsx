@@ -5,7 +5,7 @@ import { playfairDisplayFont } from '@/ui/fonts'
 
 export default function GenderButton(props: { image: { src: StaticImageData, alt: string }, label: string, onClick: () => any }) {
   return (
-    <button className={styles.gender} onClick={props.onClick}>
+    <button className={styles.gender} onClick={props.onClick} type='button'>
       <Image 
         src={props.image.src}
         alt={props.image.alt}

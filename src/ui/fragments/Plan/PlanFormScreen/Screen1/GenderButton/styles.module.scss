@@ -16,5 +16,14 @@
     color: var(--primary-text-color);
     gap: 8px;
     font-size: 24px;
+
+    svg {
+      min-width: 28px;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 16px;
+      gap: 0;
+    }
   }
 }

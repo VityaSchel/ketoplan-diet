@@ -15,7 +15,7 @@ export const ValidationSchema/* { [key in keyof PlanFormValues]?: Yup.AnySchema 
 export default function Screen1() {
   return (
     <PlanFormScreen
-      title={<span style={{ fontSize: 64 }}>Получите свой план кетодиеты</span>}
+      title={<span style={{ fontSize: '1.45em' }}>Получите свой план кетодиеты</span>}
       subtitle='Ответьте на 8 простых вопросов, и мы рассчитаем ваш индивидуальный план питания'
       screen={1}
     >
