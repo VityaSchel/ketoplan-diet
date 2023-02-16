@@ -1,8 +1,9 @@
 import styles from './styles.module.scss'
+import cx from 'classnames'
 
-export default function Button({ children, ...props }: { children: React.ReactNode, props: React.ButtonHTMLAttributes<HTMLButtonElement> }) {
+export default function Button({ children, variant = 'contained', ...props }: { children: React.ReactNode, variant: 'contained' | 'text', props: React.ButtonHTMLAttributes<HTMLButtonElement> }) {
   return (
-    <button type='button' className={styles.button} {...props}>
+    <button type='button' className={cx(styles.button, { [styles.contained]: variant === 'contained', [styles.text]: variant === 'text' })} {...props}>
       {children}
     </button>
   )

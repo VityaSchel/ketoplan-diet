@@ -31,13 +31,13 @@ export type PlanFormValues = {
 }
 
 export default function PlanForm(props: { formik: FormikProps<PlanFormValues> }) {
-  const [screen, setScreen] = React.useState<number>(1)
+  const [screen, setScreen] = React.useState<number>(0)
 
   return (
     <form>
       {[
-        <Screen1 key={1} formik={props.formik} onContinue={() => setScreen(2)} />,
-        <Screen2 key={2} formik={props.formik} onContinue={() => setScreen(3)} />
+        <Screen1 key={1} onContinue={() => setScreen(1)}/>,
+        <Screen2 key={2} onContinue={() => setScreen(2)} onGoBack={() => setScreen(0)} />
       ][screen]}
     </form>
   )

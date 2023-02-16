@@ -3,9 +3,10 @@ import PlanFormScreen from '@/ui/fragments/Plan/PlanFormScreen'
 import Screen2Image from '@/assets/PlanForm/Screen2.png'
 import * as Yup from 'yup'
 import Select from '@/ui/components/Select'
-import { FormikProps, useFormik } from 'formik'
+import { FormikProps, useFormik, useFormikContext } from 'formik'
 import { PlanFormValues } from '@/ui/fragments/Plan/PlanForm'
 import Button from '@/ui/components/Button'
+import GoBackArrow from '../GoBackArrow.svg'
 
 export const ValidationSchema = {
   activityInterval: Yup.string()
@@ -13,7 +14,9 @@ export const ValidationSchema = {
     .required()
 }
 
-export default function Screen2(props: { formik: FormikProps<PlanFormValues>, onContinue: () => any }) {
+export default function Screen2(props: { onContinue: () => any, onGoBack: () => any }) {
+  const formik = useFormikContext<PlanFormValues>()
+
   return (
     <PlanFormScreen
       title='Физическая активность'
@@ -29,13 +32,13 @@ export default function Screen2(props: { formik: FormikProps<PlanFormValues>, on
           { label: 'Я занимаюсь 3-5 раз в неделю', key: 'EXERCISE_EVERY_OTHER_DAY' },
           { label: 'Я занимаюсь 5-7 раз в неделю', key: 'EXERCISE_EVERYDAY' },
         ]}
-        value={props.formik.values.activityInterval}
-        onChange={newValue => props.formik.setFieldValue('activityInterval', newValue)}
+        value={formik.values.activityInterval}
+        onChange={newValue => formik.setFieldValue('activityInterval', newValue)}
         multi={false}
       />
       <div className={styles.actions}>
         <Button variant='contained' onClick={props.onContinue}>Продолжить</Button>
-        <Button variant='text' onClick={props.onContinue}>Продолжить</Button>
+        <Button variant='text' onClick={props.onGoBack}><GoBackArrow /> Назад</Button>
       </div>
     </PlanFormScreen>
   )

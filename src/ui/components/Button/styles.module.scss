@@ -1,13 +1,24 @@
 .button {
   all: unset;
   padding: 20px;
-  background-color: var(--button-default-color);
-  color: #fff;
   border-radius: 16px;
   cursor: pointer;
   transition: background-color 200ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  
+  &.contained {
+    background-color: var(--button-default-color);
+    color: #fff;
+  
+    &:hover {
+      background-color: var(--button-default-color_dimmed);
+    }
+  }
 
-  &:hover {
-    background-color: var(--button-default-color_dimmed);
+  &.text {
+    color: var(--button-default-color);
   }
 }
