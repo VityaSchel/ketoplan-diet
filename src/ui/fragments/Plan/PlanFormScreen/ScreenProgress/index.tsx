@@ -22,7 +22,7 @@ export default function ScreenProgress(props: { screen: number }) {
           <div key={i} className={cx(styles.screen, { [styles.active]: i < props.screen })} />
         ))}
       </div>
-      <span className={cx(styles.current, playfairDisplayFont.className)}>{screens[props.screen]}</span>
+      <span className={cx(styles.current, playfairDisplayFont.className, styles.currentName)}>{screens[props.screen]}</span>
     </div>
   )
 }

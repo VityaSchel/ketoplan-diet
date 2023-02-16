@@ -1,3 +1,5 @@
+$mobileBannerHeight: 220px;
+
 .screen {
   display: flex;
   color: var(--primary-text-color);
@@ -7,6 +9,7 @@
 
   @media screen and (max-width: 768px) {
     margin-top: 52px;
+    flex-direction: row-reverse;
   }
 
   .leftColumn {
@@ -16,6 +19,10 @@
     flex: 1;
     max-width: 100%;
     padding-bottom: 80px;
+
+    @media screen and (max-width: 768px) {
+      margin-top: $mobileBannerHeight - 60px;
+    }
 
     .leftColumnContent {
       display: flex;
@@ -57,6 +64,11 @@
 
       .screenContent {
         margin-top: 48px;
+        
+        @media screen and (max-width: 768px) {
+          max-width: 100%;
+          padding: 0 20px;
+        }
       }
 
       .screenProgress {
@@ -74,11 +86,24 @@
     $width: 41%;
     width: $width;
 
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
+    $br: 16px;
     .imageContainer {
       position: fixed;
       top: 0;
       width: $width;
       height: 100%;
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        height: $mobileBannerHeight;
+        border-radius: 0 0 $br $br;
+        overflow: hidden;
+        position: absolute;
+      }
 
       .image {
         position: relative;
@@ -88,6 +113,10 @@
         img {
           object-fit: cover;
           object-position: center;
+
+          @media screen and (max-width: 768px) {
+            object-position: top center;
+          }
         }
       }
     }
@@ -104,6 +133,24 @@
       color: #fff;
       --active-color: #fff;
       --inactive-color: rgba(255, 255, 255, 0.25);
+
+      @media screen and (max-width: 768px) {
+        position: absolute;
+        top: 0;
+        height: $mobileBannerHeight;
+        border-radius: 0 0 $br $br;
+        align-items: flex-end;
+        padding-bottom: 16px;
+        background: rgba(0, 0, 0, 0.5);
+
+        & > div {
+          width: 100%;
+
+          span:nth-child(3) {
+            display: none;
+          }
+        }
+      }
     }
   }
 }
