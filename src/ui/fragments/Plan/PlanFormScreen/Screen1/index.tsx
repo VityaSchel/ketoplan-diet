@@ -6,11 +6,12 @@ import GenderButton from './GenderButton'
 import Male from '@/assets/Male.png'
 import Female from '@/assets/Female.png'
 
-export const ValidationSchema/* { [key in keyof PlanFormValues]?: Yup.AnySchema } */ = Yup.object<Partial<Record<keyof PlanFormValues, Yup.AnySchema>>>({
+// /* { [key in keyof PlanFormValues]?: Yup.AnySchema } */ = Yup.object<Partial<Record<keyof PlanFormValues, Yup.AnySchema>>>(
+export const ValidationSchema = {
   gender: Yup.string()
     .oneOf(['MALE', 'FEMALE'])
     .required()
-})
+}
 
 export default function Screen1() {
   return (

@@ -1,0 +1,17 @@
+.option {
+  all: unset;
+  background-color: #F4EAE4;
+  padding: 24px;
+  border-radius: 16px;
+  transition: background-color 150ms ease-in-out;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: auto;
+  }
+
+  &.selected {
+    background-color: rgba(91, 143, 147, 0.25);
+    color: #4A6168;
+  }
+}

@@ -1,6 +1,9 @@
 import PlanFormScreen from '@/ui/fragments/Plan/PlanFormScreen'
 import Screen2Image from '@/assets/PlanForm/Screen2.png'
 import * as Yup from 'yup'
+import Select from '@/ui/components/Select'
+import { FormikProps, useFormik } from 'formik'
+import { PlanFormValues } from '@/ui/fragments/Plan/PlanForm'
 
 export const ValidationSchema = {
   activityInterval: Yup.string()
@@ -8,7 +11,7 @@ export const ValidationSchema = {
     .required()
 }
 
-export default function Screen2() {
+export default function Screen2(props: { formik: FormikProps<PlanFormValues> }) {
   return (
     <PlanFormScreen
       title='Физическая активность'
@@ -16,7 +19,18 @@ export default function Screen2() {
       screen={2}
       image={Screen2Image}
     >
-      
+      <Select 
+        options={[
+          { label: 'Минимальная физическая активность', key: 'MINIMAL' },
+          { label: 'Я часто хожу пешком', key: 'FREQUENT_WALKS' },
+          { label: 'Я занимаюсь 1-2 раза в неделю', key: 'EXERCISE_ONCE_PER_WEEK' },
+          { label: 'Я занимаюсь 3-5 раз в неделю', key: 'EXERCISE_EVERY_OTHER_DAY' },
+          { label: 'Я занимаюсь 5-7 раз в неделю', key: 'EXERCISE_EVERYDAY' },
+        ]}
+        value={props.formik.values.activityInterval}
+        onChange={newValue => props.formik.setFieldValue('activityInterval', newValue)}
+        multi={false}
+      />
     </PlanFormScreen>
   )
 }
