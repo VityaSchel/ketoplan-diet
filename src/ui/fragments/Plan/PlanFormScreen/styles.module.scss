@@ -1,0 +1,12 @@
+.screen {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-text-color);
+  width: 100%;
+
+  h1 {
+    font-weight: 400;
+  }
+}
