@@ -1,4 +1,6 @@
+import { interFont, playfairDisplayFont } from '@/ui/fonts'
 import styles from './styles.module.scss'
+import cx from 'classnames'
 
 export default function PlanFormScreen(props: { 
   title: string | React.ReactNode
@@ -7,9 +9,15 @@ export default function PlanFormScreen(props: {
 }) {
   return (
     <div className={styles.screen}>
-      {typeof props.title === 'string' ? <h1>{props.title}</h1> : props.title}
-      {typeof props.subtitle === 'string' ? <h2>{props.subtitle}</h2> : props.subtitle}
-      {props.children}
+      <div className={styles.leftColumn}>
+        <div className={styles.leftColumnContent}>
+          <h1 className={cx(playfairDisplayFont.className, styles.title)}>{props.title}</h1>
+          <h2 className={cx(interFont.className, styles.subtitle)}>{props.subtitle}</h2>
+          <div className={styles.screenContent}>
+            {props.children}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
