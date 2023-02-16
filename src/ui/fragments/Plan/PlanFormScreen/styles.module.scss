@@ -1,14 +1,15 @@
 $mobileBannerHeight: 220px;
+$headerMargin: 44px;
 
 .screen {
   display: flex;
   color: var(--primary-text-color);
   width: 100%;
   text-align: center;
-  margin-top: 44px;
+  margin-top: 12px + 64px + $headerMargin;
 
   @media screen and (max-width: 768px) {
-    margin-top: 52px;
+    margin-top: 52px + $headerMargin;
     flex-direction: row-reverse;
   }
 
