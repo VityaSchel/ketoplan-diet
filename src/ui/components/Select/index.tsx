@@ -2,9 +2,23 @@ import Option from './Option'
 import styles from './styles.module.scss'
 import cx from 'classnames'
 
-export default function Select(props: { multi: true, options: { label: string, key: string }[], value: string[] | null, onChange: (newValue: string) => any }): JSX.Element
-export default function Select(props: { multi: false, options: { label: string, key: string }[], value: string | null, onChange: (newValue: string) => any }): JSX.Element
-export default function Select(props: { multi?: boolean, options: { label: string, key: string }[], value: string | string[] | null, onChange: (newValue: string) => any }): JSX.Element {
+type OptionData = { label: string, key: string }
+export default function Select(props: { multi: true, options: OptionData[], value: string[] | null, onChange: (newValue: string[]) => any }): JSX.Element
+export default function Select(props: { multi: false, options: OptionData[], value: string | null, onChange: (newValue: string) => any }): JSX.Element
+export default function Select(props: { multi?: boolean, options: OptionData[], value: string | string[] | null, onChange: (newValue: string[] | string) => any }): JSX.Element {
+  const handleChange = (option: OptionData) => {
+    if(props.multi) {
+      const value = props.value as string[]
+      if(value.includes(option.key)) {
+        props.onChange(value.filter(v => v !== option.key))
+      } else {
+        props.onChange([...value, option.key])
+      }
+    } else {
+      props.onChange(option.key)
+    }
+  }
+
   return (
     <div className={cx(styles.select, { [styles.multi]: props.multi })}>
       {props.options.map(option => (
@@ -12,7 +26,7 @@ export default function Select(props: { multi?: boolean, options: { label: strin
           multi={props.multi ?? false} 
           key={option.key} 
           selected={props.value !== null && (props.multi ? props.value.includes(option.key) : props.value === option.key)}
-          onClick={() => props.onChange(option.key)}
+          onClick={() => handleChange(option)}
         >
           {option.label}
         </Option>
