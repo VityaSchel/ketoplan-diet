@@ -15,4 +15,14 @@
     background-color: rgba(91, 143, 147, 0.25);
     color: #4A6168;
   }
+
+  .checkmark {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #E3D7CF;
+    border-radius: 222px;
+
+    &.checked {
+
+    }
+  }
 }

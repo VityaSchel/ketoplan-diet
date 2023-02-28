@@ -8,6 +8,9 @@ export default function Option(props: { selected: boolean, multi: boolean, onCli
       onClick={props.onClick}
       type='button'
     >
+      {props.multi && (
+        <span className={cx(styles.checkmark, { [styles.checked]: props.selected })} />
+      )}
       {props.children}
     </button>
   )

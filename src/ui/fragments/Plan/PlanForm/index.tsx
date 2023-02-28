@@ -3,11 +3,13 @@ import { FormikProps, useFormik } from 'formik'
 import * as Yup from 'yup'
 import Screen1, { ValidationSchema as Screen1Validation } from '../PlanFormScreen/Screen1'
 import Screen2, { ValidationSchema as Screen2Validation } from '../PlanFormScreen/Screen2'
+import Screen3, { ValidationSchema as Screen3Validation } from '../PlanFormScreen/Screen3'
 
 export const planValidationSchema = 
   Yup.object({
     ...Screen1Validation,
     ...Screen2Validation,
+    ...Screen3Validation,
   })
 
 
@@ -19,7 +21,7 @@ export type PlanFormValues = {
     'EXERCISE_ONCE_PER_WEEK' |
     'EXERCISE_EVERY_OTHER_DAY' |
     'EXERCISE_EVERYDAY' | null
-  proteinSources: ('CHICKEN' | 'PORK' | 'BEEF' | 'TURKEY' | 'NO_MEAT' | 'FIST' | 'SEAFOOD')[]
+  proteinSources: ('CHICKEN' | 'PORK' | 'BEEF' | 'TURKEY' | 'BEACON' | 'NO_MEAT' | 'FISH' | 'SEAFOOD')[]
   vegetables: ('BROCCOLI' | 'MUSHROOMS' | 'ZUCCHINI' | 'CAULIFLOWER' | 'AVOCADO' | 'ASPARAGUS' | 'BELL PEPPER' | 'EGGPLANT')[]
   otherFood: ('EGGS' | 'NUTS' | 'CHEESE' | 'COTTAGE CHEESE' | 'BUTTER' | 'COCONUT')[]
   dayType: 'OFFICE_WORK' | 'OFFICE_FREELY' | 'ON_FEET' | 'MANUAL_LABOR' | 'HOME' | null
@@ -38,7 +40,7 @@ export default function PlanForm(props: { formik: FormikProps<PlanFormValues> })
       {[
         <Screen1 key={1} onContinue={() => setScreen(1)}/>,
         <Screen2 key={2} onContinue={() => setScreen(2)} onGoBack={() => setScreen(0)} />,
-        // <Screen3 key={2} onContinue={() => setScreen(3)} onGoBack={() => setScreen(1)} />,
+        <Screen3 key={3} onContinue={() => setScreen(3)} onGoBack={() => setScreen(1)} />,
       ][screen]}
     </form>
   )
