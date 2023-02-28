@@ -33,8 +33,14 @@
     height: 24px;
     display: block;
 
+    .check {
+      display: none;
+    }
+
     &.checked {
-      background: url('./checkmark.svg');
+      .check {
+        display: block;
+      }
     }
   }
 }

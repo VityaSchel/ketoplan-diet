@@ -1,5 +1,6 @@
 import styles from './styles.module.scss'
 import cx from 'classnames'
+import Check from './checkmark.svg'
 
 export default function Option(props: { selected: boolean, multi: boolean, onClick: () => any, children: string }) {
   return (
@@ -9,7 +10,11 @@ export default function Option(props: { selected: boolean, multi: boolean, onCli
       type='button'
     >
       {props.multi && (
-        <span className={cx(styles.checkmark, { [styles.checked]: props.selected })} />
+        <span className={cx(styles.checkmark, { [styles.checked]: props.selected })}>
+          <span className={styles.check}>
+            <Check />
+          </span>
+        </span>
       )}
       <span>
         {props.children}
