@@ -10,8 +10,9 @@ import GoBackArrow from '../GoBackArrow.svg'
 import MobileScreenTheme from '@/ui/components/ScreenTheme'
 
 export const ValidationSchema = {
-  activityInterval: Yup.string()
-    .oneOf(['MINIMAL', 'FREQUENT_WALKS', 'EXERCISE_ONCE_PER_WEEK', 'EXERCISE_EVERY_OTHER_DAY', 'EXERCISE_EVERYDAY'])
+  proteinSources: Yup.array()
+    .of(Yup.string())
+    .min(1)
     .required()
 }
 
@@ -42,7 +43,7 @@ export default function Screen3(props: { onContinue: () => any, onGoBack: () => 
         multi={true}
       />
       <div className={styles.actions}>
-        <Button variant='contained' onClick={props.onContinue}>Продолжить</Button>
+        <Button variant='contained' onClick={props.onContinue} disabled={!formik.values.proteinSources.length}>Продолжить</Button>
         <Button variant='text' onClick={props.onGoBack}><GoBackArrow /> Назад</Button>
       </div>
     </PlanFormScreen>

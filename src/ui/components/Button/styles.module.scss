@@ -8,13 +8,18 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  -webkit-tap-highlight-color: transparent;
   
   &.contained {
     background-color: var(--button-default-color);
     color: #fff;
   
-    &:hover {
+    &:not([disabled]):hover {
       background-color: var(--button-default-color_dimmed);
+    }
+
+    &[disabled] {
+      background-color: var(--button-default-color_lighten);
     }
   }
 

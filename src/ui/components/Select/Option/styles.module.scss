@@ -10,6 +10,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  -webkit-tap-highlight-color: transparent;
 
   &:focus-visible {
     outline: auto;
@@ -29,17 +30,21 @@
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid #E3D7CF;
     border-radius: 222px;
-    width: 24px;
-    height: 24px;
+    $size: 24px;
+    width: $size;
+    height: $size;
     display: block;
 
     .check {
-      display: none;
+      width: $size;
+      display: flex;
+      opacity: 0;
+      transition: opacity 120ms ease-in-out;
     }
 
     &.checked {
       .check {
-        display: block;
+        opacity: 1;
       }
     }
   }
