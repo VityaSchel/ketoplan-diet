@@ -6,7 +6,7 @@
   width: 100%;
   z-index: 1;
 
-  .mobileDarkTheme {
+  &.mobileDarkTheme {
     @media screen and (max-width: 768px) {
       position: absolute;
       padding: 12px;

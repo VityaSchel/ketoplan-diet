@@ -3,12 +3,15 @@ import type { AppProps } from 'next/app'
 import AppBar from "@/ui/components/AppBar"
 import cx from 'classnames'
 import { interFont, playfairDisplayFont } from '@/ui/fonts'
+import ThemeContextContainer from '@/ui/fragments/ThemeContextContainer'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={cx(playfairDisplayFont.className, interFont.className)}>
-      <AppBar />
-      <Component {...pageProps} />
+      <ThemeContextContainer>
+        <AppBar />
+        <Component {...pageProps} />
+      </ThemeContextContainer>
     </main>
   )
 }

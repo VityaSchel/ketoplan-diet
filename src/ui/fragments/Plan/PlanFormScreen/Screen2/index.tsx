@@ -7,6 +7,7 @@ import { FormikProps, useFormik, useFormikContext } from 'formik'
 import { PlanFormValues } from '@/ui/fragments/Plan/PlanForm'
 import Button from '@/ui/components/Button'
 import GoBackArrow from '../GoBackArrow.svg'
+import MobileScreenTheme from '@/ui/components/ScreenTheme'
 
 export const ValidationSchema = {
   activityInterval: Yup.string()
@@ -24,6 +25,7 @@ export default function Screen2(props: { onContinue: () => any, onGoBack: () => 
       screen={2}
       image={Screen2Image}
     >
+      <MobileScreenTheme theme={'dark'} />
       <Select 
         options={[
           { label: 'Минимальная физическая активность', key: 'MINIMAL' },

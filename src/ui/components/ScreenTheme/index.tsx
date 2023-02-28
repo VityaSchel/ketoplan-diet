@@ -1,8 +1,13 @@
-import { ScreenThemeContext } from '/ui/fragments/Container'
+import React from 'react'
+import { ScreenTheme, ScreenThemeContext } from '@/ui/fragments/ThemeContextContainer'
 import { useContext } from 'react'
 
-export default function ScreenTheme() {
-  const {  } = useContext(ScreenThemeContext)
+export default function MobileScreenTheme(props: { theme: ScreenTheme }) {
+  const { setScreenTheme } = useContext(ScreenThemeContext)
+
+  React.useEffect(() => {
+    setScreenTheme(props.theme)
+  }, [props.theme])
 
   return (
     <></>

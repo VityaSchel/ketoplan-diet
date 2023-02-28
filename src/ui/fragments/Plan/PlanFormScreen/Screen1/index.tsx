@@ -6,6 +6,7 @@ import GenderButton from './GenderButton'
 import Male from '@/assets/Male.png'
 import Female from '@/assets/Female.png'
 import { useFormikContext } from 'formik'
+import MobileScreenTheme from '@/ui/components/ScreenTheme'
 
 // /* { [key in keyof PlanFormValues]?: Yup.AnySchema } */ = Yup.object<Partial<Record<keyof PlanFormValues, Yup.AnySchema>>>(
 export const ValidationSchema = {
@@ -23,6 +24,7 @@ export default function Screen1(props: { onContinue: () => any }) {
       subtitle='Ответьте на 8 простых вопросов, и мы рассчитаем ваш индивидуальный план питания'
       screen={1}
     >
+      <MobileScreenTheme theme={'light'} />
       <div className={styles.genderSelect}>
         <GenderButton
           image={{ src: Female, alt: 'Женщина' }}
