@@ -1,18 +1,35 @@
 .textField {
-  background: rgba(157, 136, 123, 0.05);
-  border: 1px solid rgba(157, 136, 123, 0.25);
   border-radius: 16px;
+  font-size: 18px;
+  
+  [class~=MuiFilledInput-root] {
+    border: 1px solid rgba(157, 136, 123, 0.25);
+    background: rgba(157, 136, 123, 0.05);
 
-  [class~=MuiOutlinedInput-notchedOutline] {
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+
+  [class~=MuiFilledInput-root],
+  [class~=MuiFilledInput-input] {
     border-radius: 16px;
   }
 
-  [class~=Mui-focused][class~=MuiInputLabel-root] {
-    color: black;
+  [class~=MuiFilledInput-input] {
+    $padding: 18px;
+    padding: 40px #{$padding} #{$padding} #{$padding};
   }
 
-  [class~=Mui-focused] [class~=MuiOutlinedInput-notchedOutline] {
-    border-color: black !important;
-    border-width: 1px !important;
+  [class~=MuiInputLabel-root] {
+    left: 7px;
+    top: 11px;
+    font-size: 18px;
+    color: var(--primary-text-color);
+
+    &[class~=Mui-focused] {
+      color: var(--primary-text-color);
+    }
   }
 }
