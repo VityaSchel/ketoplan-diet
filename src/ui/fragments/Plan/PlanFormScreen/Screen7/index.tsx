@@ -17,11 +17,9 @@ import SaltIcon from './assets/salt.png'
 export const ValidationSchema = {
   badHabits: Yup.array()
     .of(Yup.string())
-    .min(1)
-    .required()
 }
 
-export default function Screen6(props: { onContinue: () => any, onGoBack: () => any }) {
+export default function Screen7(props: { onContinue: () => any, onGoBack: () => any }) {
   const formik = useFormikContext<PlanFormValues>()
 
   return (

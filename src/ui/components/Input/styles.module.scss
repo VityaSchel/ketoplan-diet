@@ -1,0 +1,18 @@
+.textField {
+  background: rgba(157, 136, 123, 0.05);
+  border: 1px solid rgba(157, 136, 123, 0.25);
+  border-radius: 16px;
+
+  [class~=MuiOutlinedInput-notchedOutline] {
+    border-radius: 16px;
+  }
+
+  [class~=Mui-focused][class~=MuiInputLabel-root] {
+    color: black;
+  }
+
+  [class~=Mui-focused] [class~=MuiOutlinedInput-notchedOutline] {
+    border-color: black !important;
+    border-width: 1px !important;
+  }
+}
