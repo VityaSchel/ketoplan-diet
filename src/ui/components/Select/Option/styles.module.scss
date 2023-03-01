@@ -1,7 +1,8 @@
 .option {
   all: unset;
   background-color: #F4EAE4;
-  padding: 24px;
+  $padding: 24px;
+  padding: $padding;
   border-radius: 16px;
   transition: background-color 150ms ease-in-out;
   cursor: pointer;
@@ -11,6 +12,7 @@
   align-items: center;
   justify-content: center;
   -webkit-tap-highlight-color: transparent;
+  position: relative;
 
   &:focus-visible {
     outline: auto;
@@ -46,6 +48,17 @@
       .check {
         opacity: 1;
       }
+    }
+  }
+
+  .icon {
+    width: 64px;
+    height: 100%;
+    position: absolute;
+    right: $padding;
+
+    img {
+      object-fit: contain;
     }
   }
 }

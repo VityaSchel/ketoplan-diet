@@ -32,8 +32,9 @@ $headerMargin: 44px;
       display: flex;
       align-items: center;
       flex-direction: column; 
-      width: 800px;
-      max-width: 100%;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 20px;
 
       h1.title {
         font-weight: 400;
@@ -68,6 +69,7 @@ $headerMargin: 44px;
 
       .screenContent {
         margin-top: 48px;
+        width: 100%;
         
         @media screen and (max-width: 768px) {
           max-width: 100%;

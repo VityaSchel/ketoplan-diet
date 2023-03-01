@@ -8,6 +8,14 @@ import { PlanFormValues } from '@/ui/fragments/Plan/PlanForm'
 import Button from '@/ui/components/Button'
 import GoBackArrow from '../GoBackArrow.svg'
 import MobileScreenTheme from '@/ui/components/ScreenTheme'
+import ChickenIcon from './assets/chicken.png'
+import BaconIcon from './assets/bacon.png'
+import BeefIcon from './assets/beef.png'
+import FishIcon from './assets/fish.png'
+import NoMeatIcon from './assets/no_meat.png'
+import PorkIcon from './assets/pork.png'
+import SeafoodIcon from './assets/seafood.png'
+import TurkeyIcon from './assets/turkey.png'
 
 export const ValidationSchema = {
   proteinSources: Yup.array()
@@ -29,14 +37,14 @@ export default function Screen3(props: { onContinue: () => any, onGoBack: () => 
       <MobileScreenTheme theme={'dark'} />
       <Select 
         options={[
-          { label: 'Курица', key: 'CHICKEN' },
-          { label: 'Свинина', key: 'PORK' },
-          { label: 'Говядина', key: 'BEEF' },
-          { label: 'Индейка', key: 'TURKEY' },
-          { label: 'Бекон', key: 'BEACON' },
-          { label: 'Без мяса', key: 'NO_MEAT' },
-          { label: 'Рыба', key: 'FISH' },
-          { label: 'Морепродукты', key: 'SEAFOOD' },
+          { label: 'Курица', key: 'CHICKEN', icon: ChickenIcon },
+          { label: 'Свинина', key: 'PORK', icon: PorkIcon },
+          { label: 'Говядина', key: 'BEEF', icon: BeefIcon },
+          { label: 'Индейка', key: 'TURKEY', icon: TurkeyIcon },
+          { label: 'Бекон', key: 'BEACON', icon: BaconIcon },
+          { label: 'Без мяса', key: 'NO_MEAT', icon: NoMeatIcon },
+          { label: 'Рыба', key: 'FISH', icon: FishIcon },
+          { label: 'Морепродукты', key: 'SEAFOOD', icon: SeafoodIcon },
         ]}
         value={formik.values.proteinSources}
         onChange={newValue => formik.setFieldValue('proteinSources', newValue)}
