@@ -51,7 +51,7 @@ export default function Screen3(props: { onContinue: () => any, onGoBack: () => 
         multi={true}
       />
       <div className={styles.actions}>
-        <Button variant='contained' onClick={props.onContinue} disabled={!formik.values.proteinSources.length}>Продолжить</Button>
+        <Button variant='contained' onClick={props.onContinue} disabled={formik.errors.proteinSources}>Продолжить</Button>
         <Button variant='text' onClick={props.onGoBack}><GoBackArrow /> Назад</Button>
       </div>
     </PlanFormScreen>

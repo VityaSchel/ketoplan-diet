@@ -39,7 +39,7 @@ export default function Screen2(props: { onContinue: () => any, onGoBack: () => 
         multi={false}
       />
       <div className={styles.actions}>
-        <Button variant='contained' onClick={props.onContinue} disabled={formik.values.activityInterval === null}>Продолжить</Button>
+        <Button variant='contained' onClick={props.onContinue} disabled={formik.errors.activityInterval}>Продолжить</Button>
         <Button variant='text' onClick={props.onGoBack}><GoBackArrow /> Назад</Button>
       </div>
     </PlanFormScreen>

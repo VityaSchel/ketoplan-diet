@@ -5,6 +5,7 @@ import Screen1, { ValidationSchema as Screen1Validation } from '../PlanFormScree
 import Screen2, { ValidationSchema as Screen2Validation } from '../PlanFormScreen/Screen2'
 import Screen3, { ValidationSchema as Screen3Validation } from '../PlanFormScreen/Screen3'
 import Screen4, { ValidationSchema as Screen4Validation } from '../PlanFormScreen/Screen4'
+import Screen5, { ValidationSchema as Screen5Validation } from '../PlanFormScreen/Screen5'
 
 export const planValidationSchema = 
   Yup.object({
@@ -44,6 +45,7 @@ export default function PlanForm(props: { formik: FormikProps<PlanFormValues> })
         <Screen2 key={2} onContinue={() => setScreen(2)} onGoBack={() => setScreen(0)} />,
         <Screen3 key={3} onContinue={() => setScreen(3)} onGoBack={() => setScreen(1)} />,
         <Screen4 key={4} onContinue={() => setScreen(4)} onGoBack={() => setScreen(2)} />,
+        <Screen5 key={5} onContinue={() => setScreen(5)} onGoBack={() => setScreen(3)} />,
       ][screen]}
     </form>
   )

@@ -18,7 +18,7 @@ import MushroomsIcon from './assets/mushrooms.png'
 import ZucchiniIcon from './assets/zucchini.png'
 
 export const ValidationSchema = {
-  proteinSources: Yup.array()
+  vegetables: Yup.array()
     .of(Yup.string())
     .min(1)
     .required()
@@ -29,7 +29,7 @@ export default function Screen4(props: { onContinue: () => any, onGoBack: () => 
 
   return (
     <PlanFormScreen
-      title='Источник белков'
+      title='Овощи'
       subtitle='Выберите продукты, которые бы вы хотели включить в план'
       screen={4}
       image={Screen4Image}
@@ -46,12 +46,12 @@ export default function Screen4(props: { onContinue: () => any, onGoBack: () => 
           { label: 'Болгарский перец', key: 'BELL', icon: BellIcon },
           { label: 'Баклажан', key: 'EGGPLANT', icon: EggplantIcon },
         ]}
-        value={formik.values.proteinSources}
-        onChange={newValue => formik.setFieldValue('proteinSources', newValue)}
+        value={formik.values.vegetables}
+        onChange={newValue => formik.setFieldValue('vegetables', newValue)}
         multi={true}
       />
       <div className={styles.actions}>
-        <Button variant='contained' onClick={props.onContinue} disabled={!formik.values.proteinSources.length}>Продолжить</Button>
+        <Button variant='contained' onClick={props.onContinue} disabled={formik.errors.vegetables}>Продолжить</Button>
         <Button variant='text' onClick={props.onGoBack}><GoBackArrow /> Назад</Button>
       </div>
     </PlanFormScreen>
