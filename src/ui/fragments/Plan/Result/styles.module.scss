@@ -1,0 +1,37 @@
+.resume {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .fold {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    width: 800px;
+    text-align: center;
+    gap: 20px;
+
+    h1 {
+      font-family: 'Playfair Display';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 64px;
+
+      span {
+        color: var(--button-default-color);
+        font-style: italic;
+      }
+    }
+
+    h3 {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      color: var(--secondary-text-color);
+    }
+  }
+}

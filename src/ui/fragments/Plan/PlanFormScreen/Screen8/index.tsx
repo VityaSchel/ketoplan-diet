@@ -63,7 +63,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
         />
       </div>
       <div className={styles.actions}>
-        <Button variant='contained' onClick={props.onContinue} disabled={formik.errors.age || formik.errors.height || formik.errors.currentWeight || formik.errors.targetWeight}>Продолжить</Button>
+        <Button variant='contained' onClick={props.onContinue} disabled={Boolean(formik.errors.age || formik.errors.height || formik.errors.currentWeight || formik.errors.targetWeight)}>Продолжить</Button>
         <Button variant='text' onClick={props.onGoBack}><GoBackArrow /> Назад</Button>
       </div>
     </PlanFormScreen>

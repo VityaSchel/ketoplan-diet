@@ -55,7 +55,7 @@ export default function PlanForm(props: { formik: FormikProps<PlanFormValues> })
         <Screen5 key={5} onContinue={() => setScreen(5)} onGoBack={() => setScreen(3)} />,
         <Screen6 key={6} onContinue={() => setScreen(6)} onGoBack={() => setScreen(4)} />,
         <Screen7 key={6} onContinue={() => setScreen(7)} onGoBack={() => setScreen(5)} />,
-        <Screen8 key={7} onContinue={() => setScreen(8)} onGoBack={() => setScreen(6)} />,
+        <Screen8 key={7} onContinue={props.formik.handleSubmit} onGoBack={() => setScreen(6)} />,
       ][screen]}
     </form>
   )
