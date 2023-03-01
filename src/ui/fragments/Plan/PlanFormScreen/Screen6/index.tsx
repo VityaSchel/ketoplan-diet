@@ -16,9 +16,7 @@ import EggsIcon from './assets/eggs.png'
 import NutsIcon from './assets/nuts.png'
 
 export const ValidationSchema = {
-  proteinSources: Yup.array()
-    .of(Yup.string())
-    .min(1)
+  dayType: Yup.string()
     .required()
 }
 

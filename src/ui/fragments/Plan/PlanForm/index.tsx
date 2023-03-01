@@ -7,6 +7,7 @@ import Screen3, { ValidationSchema as Screen3Validation } from '../PlanFormScree
 import Screen4, { ValidationSchema as Screen4Validation } from '../PlanFormScreen/Screen4'
 import Screen5, { ValidationSchema as Screen5Validation } from '../PlanFormScreen/Screen5'
 import Screen6, { ValidationSchema as Screen6Validation } from '../PlanFormScreen/Screen6'
+import Screen7, { ValidationSchema as Screen7Validation } from '../PlanFormScreen/Screen7'
 
 export const planValidationSchema = 
   Yup.object({
@@ -30,7 +31,7 @@ export type PlanFormValues = {
   proteinSources: ('CHICKEN' | 'PORK' | 'BEEF' | 'TURKEY' | 'BEACON' | 'NO_MEAT' | 'FISH' | 'SEAFOOD')[]
   vegetables: ('BROCCOLI' | 'MUSHROOMS' | 'ZUCCHINI' | 'CAULIFLOWER' | 'AVOCADO' | 'ASPARAGUS' | 'BELL PEPPER' | 'EGGPLANT')[]
   otherFood: ('EGGS' | 'NUTS' | 'CHEESE' | 'COTTAGE CHEESE' | 'BUTTER' | 'COCONUT')[]
-  dayType: 'OFFICE_WORK' | 'OFFICE_FREELY' | 'ON_FEET' | 'MANUAL_LABOR' | 'HOME' | null
+  dayType: 'OFFICE_WORK' | 'OFFICE_FREELY' | 'ON_FEET' | 'MANUAL_LABOR' | 'HOME' | 'NONE' | null
   badHabits: ('LACK_OF_SLEEP' | 'NIGHT_FOOD' | 'SALT_OVERCONSUMPTION' | 'SUGAR_OVERCONSUMPTION' | 'SODA_OVERCONSUMPTION')[]
   age: number | null
   height: number | null
@@ -50,6 +51,7 @@ export default function PlanForm(props: { formik: FormikProps<PlanFormValues> })
         <Screen4 key={4} onContinue={() => setScreen(4)} onGoBack={() => setScreen(2)} />,
         <Screen5 key={5} onContinue={() => setScreen(5)} onGoBack={() => setScreen(3)} />,
         <Screen6 key={6} onContinue={() => setScreen(6)} onGoBack={() => setScreen(4)} />,
+        <Screen7 key={6} onContinue={() => setScreen(7)} onGoBack={() => setScreen(5)} />,
       ][screen]}
     </form>
   )
