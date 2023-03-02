@@ -44,8 +44,8 @@
     width: 100%;
     height: 200px;
     // tan(10deg) = x/50vw
-    // x = 50vw*arctan(10deg)
-    $katetMmargin: math.atan(10);
+    // x = 50vw*tan(10deg)
+    $katetMmargin: math.tan(10deg);
     $infoBlockHeight: 340px;
     margin-top: calc(#{$infoBlockHeight} + calc(#{$katetMmargin} * 50vw));
 
