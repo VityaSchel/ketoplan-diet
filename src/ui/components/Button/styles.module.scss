@@ -24,6 +24,11 @@
     }
   }
 
+  &.ellipsed {
+    border-radius: 99px;
+    padding: 20px 40px;
+  }
+
   &.text {
     color: var(--button-default-color);
   }

@@ -18,7 +18,16 @@ export default function PlanPage() {
           <PlanResult 
             resume={result}
           />
-        ) : (
+        ) : (<>
+          <button style={{ zIndex: 100, position: 'absolute' }} onClick={() => {
+            setResult({
+              imt: 20.29,
+              mAge: 37,
+              recommendedKcal: { min: 1300, max: 1400 },
+              recommendedWater: 1.8,
+              achievableWeightIn28Days: 55
+            })
+          }}>Skip</button>
           <Formik
             initialValues={{ 
               gender: null,
@@ -62,7 +71,7 @@ export default function PlanPage() {
           >
             {props => <PlanForm formik={props} />}
           </Formik>
-        )
+        </>)
       }
     </>
   )

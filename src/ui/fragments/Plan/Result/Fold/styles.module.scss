@@ -1,0 +1,70 @@
+@use 'sass:math';
+
+.fold {
+  width: 100%;
+
+  .info {
+    position: absolute;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+    left: 50%;
+    transform: translate(-50%);
+
+    h1 {
+      font-family: 'Playfair Display';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 64px;
+
+      span {
+        color: var(--button-default-color);
+        font-style: italic;
+        white-space: nowrap;
+      }
+    }
+
+    h3 {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      color: var(--secondary-text-color);
+      margin-bottom: 48px - 32px;
+    }
+  }
+
+  .decorationsContainer {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    // tan(10deg) = x/50vw
+    // x = 50vw*arctan(10deg)
+    $katetMmargin: math.atan(10);
+    $infoBlockHeight: 340px;
+    margin-top: calc(#{$infoBlockHeight} + calc(#{$katetMmargin} * 50vw));
+
+    .decorations {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      .background {
+        display: block;
+        width: 200%;
+        height: 200px;
+        background: #E8F4F5;
+        position: absolute;
+        transform: rotate(-10deg);
+        z-index: -1;
+      }
+    }
+  }
+}
