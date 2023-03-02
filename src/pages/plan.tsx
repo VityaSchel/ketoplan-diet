@@ -2,6 +2,7 @@ import React from 'react'
 import PlanForm, { PlanFormValues, planValidationSchema } from '@/ui/fragments/Plan/PlanForm'
 import { Formik } from 'formik'
 import PlanResult, { KetoPlanResume } from '@/ui/fragments/Plan/Result'
+import { ValidationError } from 'yup'
 
 export default function PlanPage() {
   const [result, setResult] = React.useState<KetoPlanResume | null>(null)
@@ -28,7 +29,20 @@ export default function PlanPage() {
               currentWeight: null,
               targetWeight: null
             } satisfies PlanFormValues}
-            validationSchema={planValidationSchema}
+            validate={async (values) => {
+              try {
+                await planValidationSchema.validate(values, { strict: true, abortEarly: false })
+                return {}
+              } catch(e) {
+                if(e instanceof ValidationError) {
+                  const errors = Object.fromEntries(e.inner.map(err => [err.path, err.message]))
+                  console.log(errors)
+                  return errors
+                } else {
+                  throw e
+                }
+              }
+            }}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
                 alert(JSON.stringify(values, null, 2));
