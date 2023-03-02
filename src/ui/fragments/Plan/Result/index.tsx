@@ -14,7 +14,7 @@ export default function Result(props: { resume: KetoPlanResume }) {
   return (
     <div className={styles.resume}>
       <Fold />
-      <ResumeStatistics />
+      <ResumeStatistics data={props.resume} />
     </div>
   )
 }
