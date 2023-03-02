@@ -5,6 +5,7 @@ import PlanResult, { KetoPlanResume } from '@/ui/fragments/Plan/Result'
 import { ValidationError } from 'yup'
 import { ru as yupRuLocale } from 'yup-locales'
 import * as Yup from 'yup'
+import Head from '@/ui/components/Head'
 
 Yup.setLocale(yupRuLocale)
 
@@ -13,6 +14,9 @@ export default function PlanPage() {
 
   return (
     <>
+      <Head 
+        title='План'
+      />
       {result ?
         (
           <PlanResult 

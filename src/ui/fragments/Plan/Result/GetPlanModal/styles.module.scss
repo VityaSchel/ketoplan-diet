@@ -2,6 +2,10 @@
   [class~=MuiDialog-paper] {
     padding: 40px;
     border-radius: 24px;
+
+    @media screen and (max-width: 768px) {
+      padding: 20px;
+    }
   }
 
   .title {
@@ -13,11 +17,19 @@
     text-align: center;
     color: var(--primary-text-color);
     padding: 0;
+
+    @media screen and (max-width: 768px) {
+      font-size: 26px;
+    }
   }
 
   .content {
     padding: 0;
     margin-bottom: 40px;
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 20px;
+    }
 
     .description {
       font-family: 'Inter';
@@ -28,6 +40,11 @@
       color: var(--secondary-text-color);
       padding: 24px 0 40px 0;
       text-align: center;
+
+      @media screen and (max-width: 768px) {
+        font-size: 15px;
+        padding: 16px 0 28px 0;
+      }
     }
   }
 }
