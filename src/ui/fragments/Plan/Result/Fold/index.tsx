@@ -27,12 +27,16 @@ function Decorations() {
   return (
     <span className={styles.decorationsContainer}>
       <span className={styles.decorations}>
-        <span className={styles.background} />
-        <span className={styles.fish}>
-          <Image src={FishImage} alt='' fill />
+        <span className={styles.backgroundContainer}>
+          <span className={styles.background} />
         </span>
-        <span className={styles.fruit}>
-          <Image src={FruitImage} alt='' fill />
+        <span className={styles.dishes}>
+          <span className={styles.fish}>
+            <Image src={FishImage} alt='' fill />
+          </span>
+          <span className={styles.fruit}>
+            <Image src={FruitImage} alt='' fill />
+          </span>
         </span>
       </span>
     </span>
