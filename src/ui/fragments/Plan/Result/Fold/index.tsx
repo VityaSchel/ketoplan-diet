@@ -1,5 +1,8 @@
 import styles from './styles.module.scss'
 import Button from '@/ui/components/Button'
+import Image from 'next/image'
+import FishImage from '../assets/fish.png'
+import FruitImage from '../assets/fruit.png'
 
 export default function PlanResultFold() {
   return (
@@ -25,6 +28,12 @@ function Decorations() {
     <span className={styles.decorationsContainer}>
       <span className={styles.decorations}>
         <span className={styles.background} />
+        <span className={styles.fish}>
+          <Image src={FishImage} alt='' fill />
+        </span>
+        <span className={styles.fruit}>
+          <Image src={FruitImage} alt='' fill />
+        </span>
       </span>
     </span>
   )

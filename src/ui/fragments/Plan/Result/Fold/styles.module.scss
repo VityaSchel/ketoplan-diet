@@ -5,7 +5,7 @@
 
   .info {
     position: absolute;
-    width: 800px;
+    width: 700px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,6 +14,7 @@
     gap: 32px;
     left: 50%;
     transform: translate(-50%);
+    z-index: 1;
 
     h1 {
       font-family: 'Playfair Display';
@@ -46,8 +47,9 @@
     // tan(10deg) = x/50vw
     // x = 50vw*tan(10deg)
     $katetMmargin: math.tan(10deg);
+    $katetHeight: calc(#{$katetMmargin} * 50vw);
     $infoBlockHeight: 340px;
-    margin-top: calc(#{$infoBlockHeight} + calc(#{$katetMmargin} * 50vw));
+    margin-top: calc(#{$infoBlockHeight} + #{$katetHeight});
 
     .decorations {
       display: flex;
@@ -59,11 +61,42 @@
       .background {
         display: block;
         width: 200%;
-        height: 200px;
+        height: 500px;
         background: #E8F4F5;
         position: absolute;
         transform: rotate(-10deg);
         z-index: -1;
+      }
+
+      .fish,
+      .fruit {
+        display: block;
+        position: absolute;
+        height: auto;
+        // 1920 / 1080 = 170
+        // 1000 / 660 = 120
+        // $negativeMargin: calc(0.011px / calc(100vw / 100vh));
+        // margin-top: calc(calc(0px - #{$negativeMargin}) - #{$katetHeight});
+        pointer-events: none;
+        // margin-top: calc(-170px - #{$katetHeight});
+
+        // @media screen and (max-width: 1024px) {
+        //   margin-top: calc(-120px - #{$katetHeight});
+        // }
+
+        margin-top: calc(calc(0px - 10vw) - #{$katetHeight});
+      }
+
+      .fish {
+        aspect-ratio: 1 / 1;
+        width: 35vw; 
+        left: 7vw; 
+      }
+      
+      .fruit {
+        aspect-ratio: 608 / 589;
+        width: 31vw;
+        right: 10vw;
       }
     }
   }
