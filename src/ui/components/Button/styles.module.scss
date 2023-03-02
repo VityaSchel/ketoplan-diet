@@ -9,6 +9,8 @@
   justify-content: center;
   gap: 10px;
   -webkit-tap-highlight-color: transparent;
+  font-family: 'Inter';
+  font-weight: 500;
   
   &.contained {
     background-color: var(--button-default-color);
