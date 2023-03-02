@@ -1,10 +1,27 @@
 @use 'sass:math';
-
-$mobileBreakpoint: 768px;
-$smallBreakpoint: 590px;
+@import '@/styles/breakpoints';
 
 .fold {
   width: 100%;
+
+  // tan(10deg) = x/50vw
+  // x = 50vw*tan(10deg)
+  $katetMmargin: math.tan(10deg);
+  $katetHeight: calc(#{$katetMmargin} * 50vw);
+  --infoBlockHeight: 340px;
+  --decorationsHeight: 400px;
+  $foldHeight: calc(var(--decorationsHeight) + var(--infoBlockHeight) + #{$katetHeight} - 100px);
+  height: $foldHeight;
+  
+  @media screen and (max-width: 768px) {
+    --decorationsHeight: 300px;
+    --infoBlockHeight: 120px;
+    height: calc(#{$foldHeight} + 400px);
+  }
+
+  @media screen and (max-width: 440px) {
+    --decorationsHeight: 200px;
+  }
 
   .info {
     position: absolute;
@@ -24,33 +41,16 @@ $smallBreakpoint: 590px;
       padding: 0 30px;
     }
 
-    h1 {
-      font-family: 'Playfair Display';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 64px;
-
-      @media screen and (max-width: $smallBreakpoint) {
-        font-size: 38px;
-      }
-
-      span {
-        color: var(--button-default-color);
-        font-style: italic;
-        white-space: nowrap;
-      }
-    }
-
-    h3 {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 20px;
-      color: var(--secondary-text-color);
-      margin-bottom: 48px - 32px;
-
-      @media screen and (max-width: $smallBreakpoint) {
-        font-size: 15px;
+    .heading {
+      display: flex;
+      flex-direction: column;
+      
+      h1 {
+        span {
+          color: var(--button-default-color);
+          font-style: italic;
+          white-space: nowrap;
+        }
       }
     }
   }
@@ -59,18 +59,8 @@ $smallBreakpoint: 590px;
     display: block;
     position: absolute;
     width: 100%;
-    height: 300px;
-    // tan(10deg) = x/50vw
-    // x = 50vw*tan(10deg)
-    $katetMmargin: math.tan(10deg);
-    $katetHeight: calc(#{$katetMmargin} * 50vw);
-    $infoBlockHeight: 340px;
-    margin-top: calc(#{$infoBlockHeight} + #{$katetHeight});
-    
-    @media screen and (max-width: 768px) {
-      $mobileInfoBlockHeight: 120px;
-      margin-top: calc(#{$mobileInfoBlockHeight} + #{$katetHeight});
-    }
+    height: var(--decorationsHeight);
+    margin-top: calc(var(--infoBlockHeight) + #{$katetHeight});
 
     .decorations {
       display: flex;
@@ -98,7 +88,7 @@ $smallBreakpoint: 590px;
           background: #E8F4F5;
           position: absolute;
           transform: rotate(-10deg);
-          z-index: -1;
+          z-index: 0;
         }
       }
 
@@ -106,6 +96,7 @@ $smallBreakpoint: 590px;
         width: 100%;
         position: absolute;
         height: 500px;
+        pointer-events: none;
 
         @media screen and (max-width: $mobileBreakpoint) {
           margin-top: 100px;

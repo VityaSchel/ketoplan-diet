@@ -16,8 +16,10 @@ export default function PlanResultFold() {
 function Info() {
   return (
     <div className={styles.info}>
-      <h1>Ваша персональная <span>кето-диета</span> готова</h1>
-      <h3>Получите персональный план прямо сейчас и начните добиваться результат, не откладывая это в долгий ящик</h3>
+      <div className={styles.heading}>
+        <h1>Ваша персональная <span>кето-диета</span> готова</h1>
+        <h3>Получите персональный план прямо сейчас и начните добиваться результат, не откладывая это в долгий ящик</h3>
+      </div>
       <Button ellipsed onClick={() => {}}>Получить план бесплатно</Button>
     </div>
   )

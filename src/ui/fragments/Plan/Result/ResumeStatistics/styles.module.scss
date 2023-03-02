@@ -1,0 +1,17 @@
+.statistics {
+  background: #E8F4F5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+  }
+}
