@@ -3,6 +3,7 @@ import Button from '@/ui/components/Button'
 import Image from 'next/image'
 import FishImage from '../assets/fish.png'
 import FruitImage from '../assets/fruit.png'
+import GetPlanModal from '@/ui/fragments/Plan/Result/GetPlanModal'
 
 export default function PlanResultFold() {
   return (
@@ -20,7 +21,7 @@ function Info() {
         <h1>Ваша персональная <span>кето-диета</span> готова</h1>
         <h3>Получите персональный план прямо сейчас и начните добиваться результат, не откладывая это в долгий ящик</h3>
       </div>
-      <Button ellipsed onClick={() => {}}>Получить план бесплатно</Button>
+      <GetPlanModal>Получить план бесплатно</GetPlanModal>
     </div>
   )
 }
