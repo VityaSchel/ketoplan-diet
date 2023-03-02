@@ -44,7 +44,7 @@ export default function Screen6(props: { onContinue: () => any, onGoBack: () => 
         multi={false}
       />
       <div className={styles.actions}>
-        <Button variant='contained' onClick={props.onContinue} disabled={formik.errors.otherFood}>Продолжить</Button>
+        <Button variant='contained' onClick={props.onContinue} disabled={formik.errors.dayType}>Продолжить</Button>
         <Button variant='text' onClick={props.onGoBack}><GoBackArrow /> Назад</Button>
       </div>
     </PlanFormScreen>

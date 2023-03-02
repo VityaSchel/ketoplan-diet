@@ -1,35 +1,44 @@
-.textField {
-  border-radius: 16px;
-  font-size: 18px;
-  
-  [class~=MuiFilledInput-root] {
-    border: 1px solid rgba(157, 136, 123, 0.25);
-    background: rgba(157, 136, 123, 0.05);
+.input {
+  display: flex;
+  flex-direction: column;
 
-    &:before,
-    &:after {
-      display: none;
-    }
-  }
-
-  [class~=MuiFilledInput-root],
-  [class~=MuiFilledInput-input] {
+  .textField {
     border-radius: 16px;
-  }
-
-  [class~=MuiFilledInput-input] {
-    $padding: 18px;
-    padding: 40px #{$padding} #{$padding} #{$padding};
-  }
-
-  [class~=MuiInputLabel-root] {
-    left: 7px;
-    top: 11px;
     font-size: 18px;
-    color: var(--primary-text-color);
+    
+    [class~=MuiFilledInput-root] {
+      border: 1px solid rgba(157, 136, 123, 0.25);
+      background: rgba(157, 136, 123, 0.05);
 
-    &[class~=Mui-focused] {
-      color: var(--primary-text-color);
+      &:before,
+      &:after {
+        display: none;
+      }
     }
+
+    [class~=MuiFilledInput-root],
+    [class~=MuiFilledInput-input] {
+      border-radius: 16px;
+    }
+
+    [class~=MuiFilledInput-input] {
+      $padding: 18px;
+      padding: 40px #{$padding} #{$padding} #{$padding};
+    }
+
+    [class~=MuiInputLabel-root] {
+      left: 7px;
+      top: 11px;
+      font-size: 18px;
+      color: var(--primary-text-color);
+
+      &[class~=Mui-focused] {
+        color: var(--primary-text-color);
+      }
+    }
+  }
+
+  .error {
+    margin-left: 20px;
   }
 }

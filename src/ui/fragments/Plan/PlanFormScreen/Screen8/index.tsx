@@ -11,10 +11,10 @@ import MobileScreenTheme from '@/ui/components/ScreenTheme'
 import Input from '@/ui/components/Input'
 
 export const ValidationSchema = {
-  age: Yup.number().required(),
-  height: Yup.number().required(),
-  currentWeight: Yup.number().required(),
-  targetWeight: Yup.number().required(),
+  age: Yup.number().min(1).max(100).required(),
+  height: Yup.number().min(100).max(200).required(),
+  currentWeight: Yup.number().min(50).max(200).required(),
+  targetWeight: Yup.number().min(50).max(200).required(),
 }
 
 export default function Screen8(props: { onContinue: () => any, onGoBack: () => any }) {
@@ -36,6 +36,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 1, max: 100 }}
           name='age'
           onChange={formik.handleChange}
+          error={formik.errors.age}
         />
         <Input 
           label='Ваш рост'
@@ -44,6 +45,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 100, max: 200 }}
           name='height'
           onChange={formik.handleChange}
+          error={formik.errors.height}
         />
         <Input 
           label='Текущий вес'
@@ -52,6 +54,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 50, max: 200 }}
           name='currentWeight'
           onChange={formik.handleChange}
+          error={formik.errors.currentWeight}
         />
         <Input 
           label='Желаемый вес'
@@ -60,6 +63,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 50, max: 200 }}
           name='targetWeight'
           onChange={formik.handleChange}
+          error={formik.errors.targetWeight}
         />
       </div>
       <div className={styles.actions}>

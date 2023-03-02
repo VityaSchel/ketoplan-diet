@@ -3,6 +3,10 @@ import PlanForm, { PlanFormValues, planValidationSchema } from '@/ui/fragments/P
 import { Formik } from 'formik'
 import PlanResult, { KetoPlanResume } from '@/ui/fragments/Plan/Result'
 import { ValidationError } from 'yup'
+import { ru as yupRuLocale } from 'yup-locales'
+import * as Yup from 'yup'
+
+Yup.setLocale(yupRuLocale)
 
 export default function PlanPage() {
   const [result, setResult] = React.useState<KetoPlanResume | null>(null)
@@ -36,7 +40,6 @@ export default function PlanPage() {
               } catch(e) {
                 if(e instanceof ValidationError) {
                   const errors = Object.fromEntries(e.inner.map(err => [err.path, err.message]))
-                  console.log(errors)
                   return errors
                 } else {
                   throw e
