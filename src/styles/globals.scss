@@ -1,9 +1,9 @@
 @use 'sass:color';
+@use './variables.scss' as *;
 
 :root {
   --primary-text-color: #203136;
   --secondary-text-color: #455A61;
-  $button-default-color: #5B8F93;
   --button-default-color: #{$button-default-color};
   --button-default-color_dimmed: #{color.scale($button-default-color, $lightness: -20%)};
   --button-default-color_lighten: #{color.scale($button-default-color, $saturation: -50%, $lightness: 20%)};

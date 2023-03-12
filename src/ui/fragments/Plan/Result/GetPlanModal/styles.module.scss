@@ -38,12 +38,20 @@
       font-size: 20px;
       line-height: 140%;
       color: var(--secondary-text-color);
-      padding: 24px 0 40px 0;
+      padding: 24px 0;
       text-align: center;
 
       @media screen and (max-width: 768px) {
         font-size: 15px;
-        padding: 16px 0 28px 0;
+        padding: 16px 0;
+      }
+    }
+
+    .formDescription {
+      padding-bottom: 40px - 24px;
+
+      @media screen and (max-width: 768px) {
+        padding-bottom: 28px - 16px;
       }
     }
   }

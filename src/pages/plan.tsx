@@ -73,7 +73,7 @@ export default function PlanPage() {
               }, 400);
             }}
           >
-            {props => <PlanForm formik={props} />}
+            {props => <PlanForm formik={props as any} />}
           </Formik>
         </>)
       }

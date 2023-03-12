@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use '@/styles/variables.scss' as *;
+
 .button {
   all: unset;
   padding: 20px;
@@ -11,18 +14,34 @@
   -webkit-tap-highlight-color: transparent;
   font-family: 'Inter';
   font-weight: 500;
+
+  &[disabled] {
+    cursor: auto;
+  }
   
   &.contained {
     background-color: var(--button-default-color);
     color: #fff;
   
     &:not([disabled]):hover {
-      background-color: var(--button-default-color_dimmed);
+      background-color: #{color.scale($button-default-color, $lightness: -20%)};
     }
 
     &[disabled] {
-      background-color: var(--button-default-color_lighten);
-      cursor: auto;
+      background-color: #{color.scale($button-default-color, $saturation: -50%, $lightness: 20%)};
+    }
+  }
+
+  &.tonal {
+    background-color: $button-tonal-background-color;
+    color: $button-default-color;
+  
+    &:not([disabled]):hover {
+      background-color: #{color.scale($button-tonal-background-color, $alpha: 20%)};
+    }
+
+    &[disabled] {
+      background-color: #{color.scale($button-tonal-background-color, $saturation: -50%, $lightness: 20%)};
     }
   }
 
