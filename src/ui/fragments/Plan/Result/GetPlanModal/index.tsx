@@ -4,6 +4,7 @@ import Button from '@/ui/components/Button'
 import Dialog from '@mui/material/Dialog'
 import EmailDialogForm from './Form'
 import EmailDialogResult from './Result'
+import { MdClose } from 'react-icons/md'
 
 export default function GetPlanModal(props: { children: React.ReactNode }) {
   const [dialogVisible, setDialogVisible] = React.useState(false)
@@ -26,11 +27,16 @@ function EmailDialog(props: { open: boolean, onClose: () => any }) {
   }, [props.open])
 
   return (
-    <Dialog open={props.open} onClose={props.onClose} className={styles.dialog}>
-      {screen === 'form'
-        ? <EmailDialogForm onSubmit={() => setScreen('result')} />
-        : <EmailDialogResult onClose={props.onClose} />
-      }
-    </Dialog>
+    <>
+      <Dialog open={props.open} onClose={props.onClose} className={styles.dialog}>
+        {screen === 'form'
+          ? <EmailDialogForm onSubmit={() => setScreen('result')} />
+          : <EmailDialogResult onClose={props.onClose} />
+        }
+        <button className={styles.closeButton} onClick={props.onClose}>
+          <MdClose />
+        </button>
+      </Dialog>
+    </>
   )
 }

@@ -72,3 +72,20 @@
     }
   }
 }
+
+.closeButton {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: none;
+  border: 0;
+  display: flex;
+  padding: 32px;
+  cursor: pointer;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+  }
+}
