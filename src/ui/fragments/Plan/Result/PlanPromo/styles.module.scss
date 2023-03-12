@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .planPromo {
   width: 100%;
   background-color: #F8EBDD;
@@ -34,24 +36,33 @@
             // gap: 16px;
             white-space: pre-wrap;
 
-            &::before {
-              content: '';
+            .checkmark {
               margin-right: 16px;
               width: 32px;
               height: 32px;
               border-radius: 99px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
             }
 
-            &:nth-child(1)::before {
-              background: rgba(79, 72, 210, 0.1);
+            // TODO: mixin
+            &:nth-child(1) .checkmark {
+              $color: rgb(79, 72, 210);
+              color: $color;
+              background: color.scale($color, $alpha: -90%);
             }
 
-            &:nth-child(2)::before {
-              background: rgba(85, 180, 107, 0.1);
+            &:nth-child(2) .checkmark {
+              $color: rgb(85, 180, 107);
+              color: $color;
+              background: color.scale($color, $alpha: -90%);
             }
 
-            &:nth-child(3)::before {
-              background: rgba(244, 155, 80, 0.1);
+            &:nth-child(3) .checkmark {
+              $color: rgb(244, 155, 80);
+              color: $color;
+              background: color.scale($color, $alpha: -90%);
             }
           }
         }
