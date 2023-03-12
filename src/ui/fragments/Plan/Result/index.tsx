@@ -1,7 +1,8 @@
 import styles from './styles.module.scss'
+import MobileScreenTheme from '@/ui/components/ScreenTheme'
 import Fold from './Fold'
 import ResumeStatistics from './ResumeStatistics'
-import MobileScreenTheme from '@/ui/components/ScreenTheme'
+import PlanPromo from './PlanPromo'
 
 export type KetoPlanResume = { 
   imt: number, 
@@ -14,9 +15,10 @@ export type KetoPlanResume = {
 export default function Result(props: { resume: KetoPlanResume }) {
   return (
     <div className={styles.resume}>
-      <MobileScreenTheme theme='dark' />
+      <MobileScreenTheme theme='light' />
       <Fold />
       <ResumeStatistics data={props.resume} />
+      <PlanPromo />
     </div>
   )
 }
