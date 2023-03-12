@@ -20,7 +20,7 @@ function EmailDialog(props: { open: boolean, onClose: () => any }) {
   const [screen, setScreen] = React.useState<'form' | 'result'>('form')
 
   React.useEffect(() => {
-    if(props.open) {
+    if(!props.open) {
       setScreen('form')
     }
   }, [props.open])

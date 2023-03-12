@@ -2,7 +2,7 @@ import styles from './styles.module.scss'
 import TextField, { TextFieldProps } from '@mui/material/TextField'
 import { FormHelperText } from '@mui/material'
 
-export default function Input(props: Omit<TextFieldProps, 'error'> & { error?: string }) {
+export default function Input(props: Omit<TextFieldProps, 'error'> & { error?: string, onEnter: (e: React.KeyboardEvent<HTMLDivElement>) => any }) {
   const { error, ...textFieldProps } = props
 
   return (
@@ -12,6 +12,11 @@ export default function Input(props: Omit<TextFieldProps, 'error'> & { error?: s
         InputLabelProps={{ shrink: true }}
         className={styles.textField}
         error={Boolean(error)}
+        onKeyDown={e => {
+          if(e.key === 'Enter') {
+            props.onEnter?.(e)
+          }
+        }}
         {...textFieldProps}
       />
       {props.error && (

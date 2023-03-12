@@ -42,6 +42,7 @@ export default function EmailDialogForm(props: { onSubmit: () => any }) {
               value={values.email}
               onChange={handleChange}
               error={errors.email}
+              onEnter={() => handleSubmit()}
             />
           </DialogContent>
           <Button onClick={() => handleSubmit()}>Отправить</Button>
