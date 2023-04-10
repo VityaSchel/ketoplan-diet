@@ -1,8 +1,8 @@
 import styles from './styles.module.scss'
 import Button from '@/shared/Button'
 import Image from 'next/image'
-import FishImage from '../assets/fish.png'
-import FruitImage from '../assets/fruit.png'
+import FishImage from '@/assets/plan-result/fish.png'
+import FruitImage from '@/assets/plan-result/fruit.png'
 import GetPlanModal from '@/features/get-plan-modal'
 
 export default function PlanResultFold() {

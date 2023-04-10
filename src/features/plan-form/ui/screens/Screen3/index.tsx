@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 import PlanFormScreen from '@/features/plan-form/ui/screens'
-import Screen3Image from '@/assets/PlanForm/Screen3.png'
+import Screen3Image from '@/assets/plan-form-screens/Screen3.png'
 import * as Yup from 'yup'
 import Select from '@/shared/Select'
 import { FormikProps, useFormik, useFormikContext } from 'formik'

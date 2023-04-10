@@ -4,7 +4,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import Button from '@/shared/Button'
 import cx from 'classnames'
-import FruitDish from '../assets/fruit.png'
+import FruitDish from '@/assets/plan-result/fruit.png'
 import Image from 'next/image'
 
 export default function Result(props: { onClose: () => any }) {

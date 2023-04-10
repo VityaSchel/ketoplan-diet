@@ -2,8 +2,8 @@ import React from 'react'
 import styles from './styles.module.scss'
 import Button from '@/shared/Button'
 import Dialog from '@mui/material/Dialog'
-import EmailDialogForm from './Form'
-import EmailDialogResult from './Result'
+import EmailDialogForm from './form'
+import EmailDialogResult from './result'
 import { MdClose } from 'react-icons/md'
 
 export default function GetPlanModal(props: { children: React.ReactNode }) {

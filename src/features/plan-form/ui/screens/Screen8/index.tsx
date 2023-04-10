@@ -1,24 +1,32 @@
 import styles from './styles.module.scss'
 import PlanFormScreen from '@/features/plan-form/ui/screens'
-import Screen8Image from '@/assets/PlanForm/Screen8.png'
+import Screen8Image from '@/assets/plan-form-screens/Screen8.png'
 import * as Yup from 'yup'
 import Select from '@/shared/Select'
 import { useFormikContext } from 'formik'
-import { PlanFormValues } from '@/features/PlanForm'
+import { PlanFormValues } from '@/features/plan-form/model/values'
 import Button from '@/shared/Button'
 import GoBackArrow from '../GoBackArrow.svg'
 import MobileScreenTheme from '@/shared/ScreenTheme'
 import Input from '@/shared/Input'
+import { ru as yupRuLocale } from 'yup-locales'
+
+Yup.setLocale(yupRuLocale)
 
 export const ValidationSchema = {
-  age: Yup.number().min(1).max(100).required(),
-  height: Yup.number().min(100).max(200).required(),
-  currentWeight: Yup.number().min(50).max(200).required(),
-  targetWeight: Yup.number().min(50).max(200).required(),
+  age: Yup.number().min(1, 'Минимум 1').max(100, 'Максимум 100').required('Обязательное поле'),
+  height: Yup.number().min(100, 'Минимум 100').max(200, 'Максимум 200').required('Обязательное поле'),
+  currentWeight: Yup.number().min(50, 'Минимум 50').max(200, 'Максимум 200').required('Обязательное поле'),
+  targetWeight: Yup.number().min(50, 'Минимум 50').max(200, 'Максимум 200').required('Обязательное поле'),
 }
 
 export default function Screen8(props: { onContinue: () => any, onGoBack: () => any }) {
   const formik = useFormikContext<PlanFormValues>()
+  const isSubmitDisabled = Boolean(formik.errors.age || formik.errors.height || formik.errors.currentWeight || formik.errors.targetWeight)
+
+  const handleContinue = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    props.onContinue()
+  }
 
   return (
     <PlanFormScreen
@@ -36,6 +44,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 1, max: 100 }}
           name='age'
           onChange={formik.handleChange}
+          onEnter={isSubmitDisabled ? (e: any) => {} : handleContinue}
           error={formik.errors.age}
         />
         <Input 
@@ -45,6 +54,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 100, max: 200 }}
           name='height'
           onChange={formik.handleChange}
+          onEnter={isSubmitDisabled ? (e: any) => {} : handleContinue}
           error={formik.errors.height}
         />
         <Input 
@@ -54,6 +64,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 50, max: 200 }}
           name='currentWeight'
           onChange={formik.handleChange}
+          onEnter={isSubmitDisabled ? (e: any) => {} : handleContinue}
           error={formik.errors.currentWeight}
         />
         <Input 
@@ -63,11 +74,12 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 50, max: 200 }}
           name='targetWeight'
           onChange={formik.handleChange}
+          onEnter={isSubmitDisabled ? (e: any) => {} : handleContinue}
           error={formik.errors.targetWeight}
         />
       </div>
       <div className={styles.actions}>
-        <Button variant='contained' onClick={props.onContinue} disabled={Boolean(formik.errors.age || formik.errors.height || formik.errors.currentWeight || formik.errors.targetWeight)}>Продолжить</Button>
+        <Button variant='contained' onClick={props.onContinue} disabled={isSubmitDisabled}>Продолжить</Button>
         <Button variant='text' onClick={props.onGoBack}><GoBackArrow /> Назад</Button>
       </div>
     </PlanFormScreen>
