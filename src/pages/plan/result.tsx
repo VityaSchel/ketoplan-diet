@@ -1,10 +1,12 @@
 import React from 'react'
-import { Formik } from 'formik'
-import { PlanResult } from '@/widgets/plan-result/ui'
-import { ValidationError } from 'yup'
 import { useRouter } from 'next/router'
-import * as yup from 'yup'
 import { KetoPlanResume } from '@/widgets/plan-result/model/ketoplan-resume'
+import { PlanResultPageWrapper } from '@/widgets/plan-result-page-wrapper'
+import MobileScreenTheme from '@/shared/ScreenTheme'
+import Fold from '@/widgets/plan-result/fold'
+import ResumeStatistics from '@/widgets/plan-result/resume-statistics'
+import PlanPromo from '@/widgets/plan-result/plan-promo'
+import Reviews from '@/widgets/plan-result/reviews'
 
 export default function PlanResultPage() {
   const [results, setResults] = React.useState<KetoPlanResume | null>(null)
@@ -26,7 +28,15 @@ export default function PlanResultPage() {
 
   return (
     <>
-      {results !== null && <PlanResult resume={results} />}
+      {results !== null && (
+        <PlanResultPageWrapper>
+          <MobileScreenTheme theme='light' />
+          <Fold />
+          <ResumeStatistics data={results} />
+          <PlanPromo />
+          <Reviews />
+        </PlanResultPageWrapper>
+      )}
     </>
   )
 }
