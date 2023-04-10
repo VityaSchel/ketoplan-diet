@@ -1,7 +1,7 @@
 import { interFont, playfairDisplayFont } from '@/ui/fonts'
 import styles from './styles.module.scss'
 import cx from 'classnames'
-import ScreenProgress from '@/ui/fragments/Plan/PlanFormScreen/ScreenProgress'
+import ScreenProgress from '@/features/plan-form/ui/screens/ScreenProgress'
 import Image, { StaticImageData } from 'next/image'
 
 export default function PlanFormScreen(props: { 

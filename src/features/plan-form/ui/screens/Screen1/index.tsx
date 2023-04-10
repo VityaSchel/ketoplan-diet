@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 import PlanFormScreen from '../index'
-import { PlanFormValues } from '../../PlanForm/index'
+import { PlanFormValues } from '../../plan-form'
 import * as Yup from 'yup'
 import GenderButton from './GenderButton'
 import Male from '@/assets/Male.png'

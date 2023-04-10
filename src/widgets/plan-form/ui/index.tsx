@@ -1,10 +1,11 @@
-// import PlanFormBody
-// , { PlanFormValues, planValidationSchema } from '@/ui/fragments/Plan/PlanForm'
-import { planFormValues } from '../model/values'
-import { KetoPlanResume } from '@/widgets/plan-result/ui/plan-result-body'
+import { PlanForm } from '@/features/plan-form/ui/plan-form'
+import { planFormValues } from '@/features/plan-form/model/values'
+import { planValidationSchema } from '@/features/plan-form/model/schema'
+import { KetoPlanResume } from '@/widgets/plan-result/model/ketoplan-resume'
 import { Formik } from 'formik'
+import { ValidationError } from 'yup'
 
-export function PlanForm({ 
+export function PlanFormContainer({ 
   onSubmit 
 }: { onSubmit: (results: KetoPlanResume) => any }) {
   return (
