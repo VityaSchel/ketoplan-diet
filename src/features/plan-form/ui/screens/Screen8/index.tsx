@@ -2,13 +2,13 @@ import styles from './styles.module.scss'
 import PlanFormScreen from '@/features/plan-form/ui/screens'
 import Screen8Image from '@/assets/PlanForm/Screen8.png'
 import * as Yup from 'yup'
-import Select from '@/ui/components/Select'
+import Select from '@/shared/Select'
 import { useFormikContext } from 'formik'
 import { PlanFormValues } from '@/features/PlanForm'
-import Button from '@/ui/components/Button'
+import Button from '@/shared/Button'
 import GoBackArrow from '../GoBackArrow.svg'
-import MobileScreenTheme from '@/ui/components/ScreenTheme'
-import Input from '@/ui/components/Input'
+import MobileScreenTheme from '@/shared/ScreenTheme'
+import Input from '@/shared/Input'
 
 export const ValidationSchema = {
   age: Yup.number().min(1).max(100).required(),

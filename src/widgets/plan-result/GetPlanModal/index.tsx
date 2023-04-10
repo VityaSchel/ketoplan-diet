@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import Button from '@/ui/components/Button'
+import Button from '@/shared/Button'
 import Dialog from '@mui/material/Dialog'
 import EmailDialogForm from './Form'
 import EmailDialogResult from './Result'

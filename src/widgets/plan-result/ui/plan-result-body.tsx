@@ -1,5 +1,5 @@
 import styles from './styles.module.scss'
-import MobileScreenTheme from '@/ui/components/ScreenTheme'
+import MobileScreenTheme from '@/shared/ScreenTheme'
 import Fold from '../Fold'
 import ResumeStatistics from '../ResumeStatistics'
 import PlanPromo from '../PlanPromo'

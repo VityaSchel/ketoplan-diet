@@ -2,12 +2,12 @@ import styles from './styles.module.scss'
 import PlanFormScreen from '@/features/plan-form/ui/screens'
 import Screen2Image from '@/assets/PlanForm/Screen2.png'
 import * as Yup from 'yup'
-import Select from '@/ui/components/Select'
+import Select from '@/shared/Select'
 import { FormikProps, useFormik, useFormikContext } from 'formik'
 import { PlanFormValues } from '@/features/PlanForm'
-import Button from '@/ui/components/Button'
+import Button from '@/shared/Button'
 import GoBackArrow from '../GoBackArrow.svg'
-import MobileScreenTheme from '@/ui/components/ScreenTheme'
+import MobileScreenTheme from '@/shared/ScreenTheme'
 
 export const ValidationSchema = {
   activityInterval: Yup.string()

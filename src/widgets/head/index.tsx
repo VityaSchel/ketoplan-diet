@@ -1,9 +1,14 @@
+import React from 'react'
 import Head from 'next/head'
 
-export default function CustomHead(props: { title: string }) {
+export default function CustomHead({ 
+  title,
+  children
+}: React.PropsWithChildren<{ title: string }>) {
   return (
     <Head>
-      <title>{props.title}</title>
+      <title>{title}</title>
+      {children}
     </Head>
   )
 }

@@ -3,7 +3,7 @@ import Sranyna from './assets/Sranyna.png'
 import Shpyiva from './assets/Shpyiva.png'
 import Image from 'next/image'
 import CheckmarkSvg from './assets/checkmark.svg'
-import Button from '@/ui/components/Button'
+import Button from '@/shared/Button'
 
 export default function PlanPromo() {
   return (

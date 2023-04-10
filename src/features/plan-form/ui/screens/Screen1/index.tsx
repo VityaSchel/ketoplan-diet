@@ -1,12 +1,12 @@
 import styles from './styles.module.scss'
 import PlanFormScreen from '../index'
-import { PlanFormValues } from '../../plan-form'
+// import { PlanFormValues } from '../../plan-form'
 import * as Yup from 'yup'
 import GenderButton from './GenderButton'
 import Male from '@/assets/Male.png'
 import Female from '@/assets/Female.png'
 import { useFormikContext } from 'formik'
-import MobileScreenTheme from '@/ui/components/ScreenTheme'
+import MobileScreenTheme from '@/shared/ScreenTheme'
 
 // /* { [key in keyof PlanFormValues]?: Yup.AnySchema } */ = Yup.object<Partial<Record<keyof PlanFormValues, Yup.AnySchema>>>(
 export const ValidationSchema = {

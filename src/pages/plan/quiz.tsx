@@ -1,5 +1,5 @@
 import React from 'react'
-import { PlanForm } from '@/widgets/plan-form/ui'
+import { PlanFormContainer } from '@/widgets/plan-form/ui'
 import { ru as yupRuLocale } from 'yup-locales'
 import * as Yup from 'yup'
 import Head from '@/widgets/head'
@@ -15,7 +15,7 @@ export default function PlanPage() {
       <Head 
         title='План'
       />
-      <PlanForm 
+      <PlanFormContainer 
         onSubmit={results => router.push({
           pathname: '/plan/result',
           query: { result: JSON.stringify(results) }
