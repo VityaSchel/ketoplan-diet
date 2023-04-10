@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScreenTheme, ScreenThemeContext } from '@/ui/fragments/ThemeContextContainer'
+import { ScreenTheme, ScreenThemeContext } from '@/shared/ThemeContextContainer'
 import { useContext } from 'react'
 
 export default function MobileScreenTheme(props: { theme: ScreenTheme }) {

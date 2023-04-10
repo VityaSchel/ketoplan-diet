@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from 'next/image'
 import styles from './styles.module.scss'
 import RightArrow from './RightArrow.svg'
-import { playfairDisplayFont } from '@/ui/fonts'
+import { playfairDisplayFont } from '@/shared/fonts'
 
 export default function GenderButton(props: { image: { src: StaticImageData, alt: string }, label: string, onClick: () => any }) {
   return (

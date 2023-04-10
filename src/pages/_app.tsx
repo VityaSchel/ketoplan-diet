@@ -2,8 +2,8 @@ import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
 import AppBar from "@/shared/AppBar"
 import cx from 'classnames'
-import { interFont, playfairDisplayFont } from '@/ui/fonts'
-import ThemeContextContainer from '@/ui/fragments/ThemeContextContainer'
+import { interFont, playfairDisplayFont } from '@/shared/fonts'
+import ThemeContextContainer from '@/shared/ThemeContextContainer'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

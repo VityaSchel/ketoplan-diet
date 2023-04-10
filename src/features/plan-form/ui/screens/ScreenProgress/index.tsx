@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 import cx from 'classnames'
-import { playfairDisplayFont } from '@/ui/fonts'
+import { playfairDisplayFont } from '@/shared/fonts'
 
 const screens = [
   'Выберите пол',

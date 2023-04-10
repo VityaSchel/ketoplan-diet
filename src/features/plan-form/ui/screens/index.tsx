@@ -1,4 +1,4 @@
-import { interFont, playfairDisplayFont } from '@/ui/fonts'
+import { interFont, playfairDisplayFont } from '@/shared/fonts'
 import styles from './styles.module.scss'
 import cx from 'classnames'
 import ScreenProgress from '@/features/plan-form/ui/screens/ScreenProgress'

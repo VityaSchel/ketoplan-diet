@@ -4,6 +4,7 @@ import { PlanResult } from '@/widgets/plan-result/ui'
 import { ValidationError } from 'yup'
 import { useRouter } from 'next/router'
 import * as yup from 'yup'
+import { KetoPlanResume } from '@/widgets/plan-result/model/ketoplan-resume'
 
 export default function PlanResultPage() {
   const [results, setResults] = React.useState<KetoPlanResume | null>(null)
