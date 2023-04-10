@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Link href='/plan'>Go to /plan</Link>
+        <Link href='/plan/quiz'>Go to /plan/quiz</Link>
       </main>
     </>
   )

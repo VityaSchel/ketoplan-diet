@@ -1,14 +1,17 @@
 // import PlanFormBody
 // , { PlanFormValues, planValidationSchema } from '@/ui/fragments/Plan/PlanForm'
-import { KetoPlanResume } from '@/ui/fragments/Plan/Result'
+import { planFormValues } from '../model/values'
+import { KetoPlanResume } from '@/widgets/plan-result/ui/plan-result-body'
+import { Formik } from 'formik'
 
 export function PlanForm({ 
   onSubmit 
 }: { onSubmit: (results: KetoPlanResume) => any }) {
   return (
     <>
+      {/* FOR DEVELOPMENT */}
       <button style={{ zIndex: 100, position: 'absolute' }} onClick={() => {
-        setResult({
+        onSubmit({
           imt: 20.29,
           mAge: 37,
           recommendedKcal: { min: 1300, max: 1400 },
@@ -16,20 +19,9 @@ export function PlanForm({
           achievableWeightIn28Days: 55
         })
       }}>Skip</button>
+      {/* FOR DEVELOPMENT */}
       <Formik
-        initialValues={{ 
-          gender: null,
-          activityInterval: null,
-          proteinSources: [],
-          vegetables: [],
-          otherFood: [],
-          dayType: null,
-          badHabits: [],
-          age: null,
-          height: null,
-          currentWeight: null,
-          targetWeight: null
-        } satisfies PlanFormValues}
+        initialValues={planFormValues}
         validate={async (values) => {
           try {
             await planValidationSchema.validate(values, { strict: true, abortEarly: false })
@@ -46,7 +38,7 @@ export function PlanForm({
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
-            setResult({
+            onSubmit({
               imt: 20.29,
               mAge: 37,
               recommendedKcal: { min: 1300, max: 1400 },

@@ -3,7 +3,7 @@ import Button from '@/ui/components/Button'
 import Image from 'next/image'
 import FishImage from '../assets/fish.png'
 import FruitImage from '../assets/fruit.png'
-import GetPlanModal from '@/ui/fragments/Plan/Result/GetPlanModal'
+import GetPlanModal from '@/widgets/plan-result/GetPlanModal'
 
 export default function PlanResultFold() {
   return (

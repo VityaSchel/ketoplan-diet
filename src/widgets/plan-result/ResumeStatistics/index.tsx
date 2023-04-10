@@ -1,9 +1,9 @@
-import { KetoPlanResume } from '@/ui/fragments/Plan/Result'
+import { KetoPlanResume } from '@/widgets/plan-result/ui/plan-result-body'
 import { Chip } from '@mui/material'
 import Image from 'next/image'
 import styles from './styles.module.scss'
 import Orange from './assets/orange.png'
-import GetPlanModal from '@/ui/fragments/Plan/Result/GetPlanModal'
+import GetPlanModal from '@/widgets/plan-result/GetPlanModal'
 
 export default function ResumeStatistics(props: { data: KetoPlanResume }) {
   return (

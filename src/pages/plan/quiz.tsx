@@ -1,0 +1,26 @@
+import React from 'react'
+import { PlanForm } from '@/widgets/plan-form/ui'
+import { ru as yupRuLocale } from 'yup-locales'
+import * as Yup from 'yup'
+import Head from '@/widgets/head'
+import { useRouter } from 'next/router'
+
+Yup.setLocale(yupRuLocale)
+
+export default function PlanPage() {
+  const router = useRouter()
+
+  return (
+    <>
+      <Head 
+        title='План'
+      />
+      <PlanForm 
+        onSubmit={results => router.push({
+          pathname: '/plan/result',
+          query: { result: JSON.stringify(results) }
+        }, '/plan/result')} 
+      />
+    </>
+  )
+}
