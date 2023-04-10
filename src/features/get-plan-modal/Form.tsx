@@ -36,10 +36,10 @@ export default function EmailDialogForm(props: { onSubmit: () => any }) {
               Укажите e-mail, куда мы отправим ваш персональный план диеты
             </DialogContentText>
             <Input
-              name='ggg'
+              name='email'
               label='E-mail'
               placeholder='Адрес электронной почты'
-              value={values.ggg}
+              value={values.email}
               onChange={handleChange}
               error={errors.email}
               onEnter={() => handleSubmit()}

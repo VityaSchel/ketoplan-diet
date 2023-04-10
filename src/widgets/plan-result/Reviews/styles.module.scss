@@ -1,9 +1,26 @@
-.reviews {
+.reviewsContainer {
   width: 100%;
   padding: 0 20px;
-  background: #E8F4F5;
+  background: #FDF6F2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 160px 0;
+
+  .reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 48px;
+
+    .cases {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 32px;
+    }
+  }
 }

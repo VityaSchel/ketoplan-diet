@@ -1,5 +1,5 @@
 @use 'sass:color';
-@use '@/styles/variables.scss' as *;
+@use '@/shared/styles/variables.scss' as variables;
 
 .button {
   all: unset;
@@ -24,24 +24,24 @@
     color: #fff;
   
     &:not([disabled]):hover {
-      background-color: #{color.scale($button-default-color, $lightness: -20%)};
+      background-color: #{color.scale(variables.$button-default-color, $lightness: -20%)};
     }
 
     &[disabled] {
-      background-color: #{color.scale($button-default-color, $saturation: -50%, $lightness: 20%)};
+      background-color: #{color.scale(variables.$button-default-color, $saturation: -50%, $lightness: 20%)};
     }
   }
 
   &.tonal {
-    background-color: $button-tonal-background-color;
-    color: $button-default-color;
+    background-color: variables.$button-tonal-background-color;
+    color: variables.$button-default-color;
   
     &:not([disabled]):hover {
-      background-color: #{color.scale($button-tonal-background-color, $alpha: 20%)};
+      background-color: #{color.scale(variables.$button-tonal-background-color, $alpha: 20%)};
     }
 
     &[disabled] {
-      background-color: #{color.scale($button-tonal-background-color, $saturation: -50%, $lightness: 20%)};
+      background-color: #{color.scale(variables.$button-tonal-background-color, $saturation: -50%, $lightness: 20%)};
     }
   }
 

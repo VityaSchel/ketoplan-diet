@@ -1,0 +1,57 @@
+@use '@/shared/styles/variables.scss' as variables;
+
+.case {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
+
+  width: 584px;
+  height: 623px;
+
+  background: #FFFFFF;
+  box-shadow: 0px 2px 64px rgba(0, 0, 0, 0.02);
+  border-radius: 24px;
+
+  .images {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    border-radius: 16px;
+    overflow: clip;
+  }
+
+  .story {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+
+    p {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      color: variables.$secondary-text-color;
+    }
+
+    .author {
+      font-family: 'Playfair Display';
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 120%;
+      font-feature-settings: 'pnum' on, 'lnum' on;
+
+      color: variables.$secondary-text-color;
+
+      .age {
+        font-style: italic;
+      }
+    }
+  }
+}
