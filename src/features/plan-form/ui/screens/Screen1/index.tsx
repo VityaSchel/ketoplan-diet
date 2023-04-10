@@ -1,6 +1,5 @@
 import styles from './styles.module.scss'
 import PlanFormScreen from '../index'
-// import { PlanFormValues } from '../../plan-form'
 import * as Yup from 'yup'
 import GenderButton from './GenderButton'
 import Male from '@/assets/Male.png'
@@ -8,7 +7,6 @@ import Female from '@/assets/Female.png'
 import { useFormikContext } from 'formik'
 import MobileScreenTheme from '@/shared/ScreenTheme'
 
-// /* { [key in keyof PlanFormValues]?: Yup.AnySchema } */ = Yup.object<Partial<Record<keyof PlanFormValues, Yup.AnySchema>>>(
 export const ValidationSchema = {
   gender: Yup.string()
     .oneOf(['MALE', 'FEMALE'])
@@ -30,7 +28,7 @@ export default function Screen1(props: { onContinue: () => any }) {
           image={{ src: Female, alt: 'Женщина' }}
           label='План для женщины'
           onClick={() => {
-            formik.setFieldValue('gender', 'MALE')
+            formik.setFieldValue('gender', 'FEMALE')
             props.onContinue()
           }}
         />
@@ -38,7 +36,7 @@ export default function Screen1(props: { onContinue: () => any }) {
           image={{ src: Male, alt: 'Мужчина' }}
           label='План для мужчины'
           onClick={() => {
-            formik.setFieldValue('gender', 'FEMALE')
+            formik.setFieldValue('gender', 'MALE')
             props.onContinue()
           }}
         />
