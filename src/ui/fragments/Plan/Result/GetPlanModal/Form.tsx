@@ -19,7 +19,7 @@ export default function EmailDialogForm(props: { onSubmit: () => any }) {
         })
       }
       validateOnChange={false}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values) => {
         // TODO: add logic here
         props.onSubmit()
       }}
@@ -36,10 +36,10 @@ export default function EmailDialogForm(props: { onSubmit: () => any }) {
               Укажите e-mail, куда мы отправим ваш персональный план диеты
             </DialogContentText>
             <Input
-              name='email'
+              name='ggg'
               label='E-mail'
               placeholder='Адрес электронной почты'
-              value={values.email}
+              value={values.ggg}
               onChange={handleChange}
               error={errors.email}
               onEnter={() => handleSubmit()}

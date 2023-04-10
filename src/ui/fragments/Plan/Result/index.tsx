@@ -3,6 +3,7 @@ import MobileScreenTheme from '@/ui/components/ScreenTheme'
 import Fold from './Fold'
 import ResumeStatistics from './ResumeStatistics'
 import PlanPromo from './PlanPromo'
+import Reviews from './Reviews'
 
 export type KetoPlanResume = { 
   imt: number, 
@@ -19,6 +20,7 @@ export default function Result(props: { resume: KetoPlanResume }) {
       <Fold />
       <ResumeStatistics data={props.resume} />
       <PlanPromo />
+      <Reviews />
     </div>
   )
 }
