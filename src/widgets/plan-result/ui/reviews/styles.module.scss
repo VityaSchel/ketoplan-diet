@@ -1,3 +1,5 @@
+@use '@/shared/styles/variables.scss' as variables;
+
 .reviewsContainer {
   width: 100%;
   padding: 0 20px;
@@ -6,7 +8,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 160px 0;
+  padding: 160px 20px;
+
+  @media screen and (max-width: variables.$breakpoint-tablet) {
+    padding: 100px 20px;
+  }
 
   .reviews {
     display: flex;
@@ -14,6 +20,7 @@
     align-items: center;
     padding: 0px;
     gap: 48px;
+    max-width: 100%;
 
     .cases {
       display: flex;
@@ -21,6 +28,11 @@
       align-items: flex-start;
       padding: 0px;
       gap: 32px;
+      max-width: 100%;
+
+      @media screen and (max-width: variables.$breakpoint-tablet) {
+        flex-direction: column;
+      }
     }
   }
 }

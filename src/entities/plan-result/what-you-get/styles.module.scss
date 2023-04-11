@@ -10,6 +10,10 @@
   background: #FDF6F2;
   border-radius: 24px;
 
+  @media screen and (max-width: variables.$breakpoint-tablet) {
+    padding: 24px 20px;
+  }
+
   span.icon {
     width: 64px;
     height: 64px;
@@ -35,6 +39,10 @@
       letter-spacing: 0.02em;
       color: variables.$primary-text-color;
       margin: 0;
+
+      @media screen and (max-width: variables.$breakpoint-tablet) {
+        font-size: 24px;
+      }
     }
 
     p {
@@ -43,6 +51,10 @@
       font-size: 18px;
       line-height: 140%;
       color: variables.$secondary-text-color;
+
+      @media screen and (max-width: variables.$breakpoint-tablet) {
+        font-size: 15px;
+      }
     }
   }
 }

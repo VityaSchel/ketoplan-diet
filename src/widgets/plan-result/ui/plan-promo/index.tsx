@@ -1,6 +1,7 @@
 import styles from './styles.module.scss'
 import Sranyna from '@/assets/plan-result/sranyna.png'
 import Shpyiva from '@/assets/plan-result/shpyiva.png'
+import ShpyivaMobile from '@/assets/plan-result/shpyiva-mobile.png'
 import Image from 'next/image'
 import { PlanPromoContent } from '@/entities/plan-result/plan-promo'
 
