@@ -2,7 +2,7 @@ import styles from './styles.module.scss'
 import Sranyna from '@/assets/plan-result/sranyna.png'
 import Shpyiva from '@/assets/plan-result/shpyiva.png'
 import Image from 'next/image'
-import { PlanPromoContent } from '@/entities/plan-promo/content'
+import { PlanPromoContent } from '@/entities/plan-result/plan-promo'
 
 export default function PlanPromo() {
   return (

@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
-import { ReviewCase as Case } from '@/entities/reviews/case'
-import { ReviewInfo as Info } from '@/entities/reviews/info'
+import { ReviewCase as Case } from '@/entities/plan-result/reviews/case'
+import { ReviewInfo as Info } from '@/entities/plan-result/reviews/info'
 import case1_before from '@/assets/reviews/case1_before.png'
 import case1_after from '@/assets/reviews/case1_after.png'
 import case2_before from '@/assets/reviews/case2_before.png'

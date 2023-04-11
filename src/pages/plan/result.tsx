@@ -7,6 +7,7 @@ import Fold from '@/widgets/plan-result/ui/fold'
 import ResumeStatistics from '@/widgets/plan-result/ui/resume-statistics'
 import PlanPromo from '@/widgets/plan-result/ui/plan-promo'
 import Reviews from '@/widgets/plan-result/ui/reviews'
+import WhatYouGet from '@/widgets/plan-result/ui/what-you-get'
 
 export default function PlanResultPage() {
   const [results, setResults] = React.useState<KetoPlanResume | null>(null)
@@ -35,6 +36,7 @@ export default function PlanResultPage() {
           <ResumeStatistics data={results} />
           <PlanPromo />
           <Reviews />
+          <WhatYouGet />
         </PlanResultPageWrapper>
       )}
     </>
