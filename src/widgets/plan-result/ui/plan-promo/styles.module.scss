@@ -46,6 +46,10 @@
               align-items: center;
             }
 
+            b {
+              font-weight: 600;
+            }
+
             // TODO: mixin
             &:nth-child(1) .checkmark {
               $color: rgb(79, 72, 210);
@@ -63,6 +67,10 @@
               $color: rgb(244, 155, 80);
               color: $color;
               background: color.scale($color, $alpha: -90%);
+            }
+
+            .getPlanButton {
+              margin-left: -20px;
             }
           }
         }

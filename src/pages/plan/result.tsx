@@ -3,10 +3,10 @@ import { useRouter } from 'next/router'
 import { KetoPlanResume } from '@/widgets/plan-result/model/ketoplan-resume'
 import { PlanResultPageWrapper } from '@/widgets/plan-result-page-wrapper'
 import MobileScreenTheme from '@/shared/ScreenTheme'
-import Fold from '@/widgets/plan-result/fold'
-import ResumeStatistics from '@/widgets/plan-result/resume-statistics'
-import PlanPromo from '@/widgets/plan-result/plan-promo'
-import Reviews from '@/widgets/plan-result/reviews'
+import Fold from '@/widgets/plan-result/ui/fold'
+import ResumeStatistics from '@/widgets/plan-result/ui/resume-statistics'
+import PlanPromo from '@/widgets/plan-result/ui/plan-promo'
+import Reviews from '@/widgets/plan-result/ui/reviews'
 
 export default function PlanResultPage() {
   const [results, setResults] = React.useState<KetoPlanResume | null>(null)

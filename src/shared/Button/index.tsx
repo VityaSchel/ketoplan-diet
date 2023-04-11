@@ -1,9 +1,11 @@
 import styles from './styles.module.scss'
 import cx from 'classnames'
 
-export default function Button(props: React.ButtonHTMLAttributes<HTMLButtonElement> & { children: React.ReactNode, variant?: 'contained' | 'tonal' | 'text', ellipsed?: boolean }) {
-  const { children, variant = 'contained', ellipsed, ...otherProps } = props
-
+export default function Button({ children, variant = 'contained', ellipsed, className, ...otherProps }: React.PropsWithChildren<{
+  variant?: 'contained' | 'tonal' | 'text', 
+  ellipsed?: boolean
+  className: string
+}> & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button type='button' className={
       cx(styles.button, { 
@@ -11,7 +13,7 @@ export default function Button(props: React.ButtonHTMLAttributes<HTMLButtonEleme
         [styles.tonal]: variant === 'tonal', 
         [styles.text]: variant === 'text',
         [styles.ellipsed]: ellipsed
-      })
+      }, className)
     } {...otherProps}>
       {children}
     </button>
