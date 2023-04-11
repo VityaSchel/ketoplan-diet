@@ -15,7 +15,8 @@ export default function PlanPromo() {
           </div>
         </div>
         <div className={styles.cardDecoration}>
-          <Image src={Shpyiva} alt='' />
+          <Image src={Shpyiva} className={styles.standalone} alt='' />
+          <Image src={ShpyivaMobile} className={styles.mobile} alt='' />
         </div>
       </div>
     </div>

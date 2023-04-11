@@ -9,8 +9,8 @@ export default function Card({ icon, title, children }: React.PropsWithChildren<
       <span className={styles.icon}>
         {icon}
       </span>
-      <div>
-        <h3>{title}</h3>
+      <div className={styles.info}>
+        <h4>{title}</h4>
         <p>{children}</p>
       </div>
     </div>

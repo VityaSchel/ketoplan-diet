@@ -1,3 +1,62 @@
-.getPlanButton {
-  margin-left: -20px;
+@use 'sass:color';
+
+.content {
+  width: 640px;
+  max-width: 100%;
+
+  ul {
+    list-style-type: none;
+    margin-top: 48px;
+    color: var(--secondary-text-color);
+
+    li {
+      margin: #{(32px / 2)} 0;
+      display: flex;
+      align-items: center;
+      // gap: 16px;
+      white-space: pre-wrap;
+
+      .checkmark {
+        margin-right: 16px;
+        width: 32px;
+        min-width: 32px;
+        height: 32px;
+        border-radius: 99px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      b {
+        font-weight: 600;
+      }
+
+      // TODO: mixin
+      &:nth-child(1) .checkmark {
+        $color: rgb(79, 72, 210);
+        color: $color;
+        background: color.scale($color, $alpha: -90%);
+      }
+
+      &:nth-child(2) .checkmark {
+        $color: rgb(85, 180, 107);
+        color: $color;
+        background: color.scale($color, $alpha: -90%);
+      }
+
+      &:nth-child(3) .checkmark {
+        $color: rgb(244, 155, 80);
+        color: $color;
+        background: color.scale($color, $alpha: -90%);
+      }
+
+      .getPlanButton {
+        margin-left: -20px;
+      }
+    }
+  }
+  
+  .getPlanButton {
+    margin-left: -20px;
+  }
 }
