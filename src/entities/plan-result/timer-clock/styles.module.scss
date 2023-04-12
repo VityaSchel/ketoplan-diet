@@ -1,32 +1,11 @@
-$percentage: 33;
-$percentageText: $percentage;
+@use '@/shared/styles/variables.scss' as variables;
 
-$arcThickness: 1em;
-$arcColor: navy;
-$arcColorBackground: #ddd;
-
-$circleSize: 14em;
-$circleColor: #ccc;
+$arcThickness: 3px;
+$circleSize: 64px;
 
 $arcStartPosition: 90deg;
 
 $circleOutterSize: $circleSize + $arcThickness*2;
-
-$flip: rotateX(0deg);
-$_arcColor: $arcColor;
-@if $percentage == 50 {
-  $flip: rotateX(0deg);
-
-} @else if $percentage > 50 {
-  $flip: rotateX(180deg);
-  $percentage: 100 - $percentage;
-  
-  $arcColor: $arcColorBackground;
-  $arcColorBackground: $_arcColor;
-}
-
-$arcSkewX: ($percentage * 3.6 - 90 ) * -1deg;
-$arcSkewXfix: $arcSkewX * -1;
 
 .circle,
 .arc,
@@ -40,51 +19,67 @@ $arcSkewXfix: $arcSkewX * -1;
 	margin: 0;
 	width: $circleOutterSize; height: $circleOutterSize;
 	border-radius: 50%;
-	background: $arcColorBackground;	
+	background: variables.$button-default-color;
 	overflow: hidden;
   
-  .text:after {
-    content: $percentageText + '%';
+  .text {
     text-align: center;
     position: absolute;
-    font-size: 5em;
-    color: #fff;
+    color: variables.$button-default-color;
     height: 1em;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+		z-index: 2;
+		line-height: 100%;
+		font-family: 'Inter';
+		font-weight: 600;
+		font-size: 14px;
   }
 }
+
 .circle:before {
 	content: '';
 	display: block;
 	position: relative;
 	width: $circleSize; height: $circleSize;
 	border-radius: 50%;
-	background: $circleColor;
+	background: #fff;
 	top: $arcThickness;
 	left: $arcThickness;
 	z-index: 1;
 }
+
 .arc {
 	overflow: hidden;
   width: 50%; height: 50%;
 	position: absolute;
-	top: -12em; right: 50%; bottom: 50%; left: -12em;
-	padding: 20em 0 0 20em;
+	right: 50%; bottom: 50%;
+	padding: 5000em 0 0 5000em;
 	transform-origin: 100% 100%;
-	transform: rotateZ($arcStartPosition) $flip skewX($arcSkewX);
-	background-color: blue;
+
+	--arcSkewX: calc(calc(calc(var(--arc-percentage) * 3.6) - 90deg) * -1);
+	--arcSkewXfix: calc(var(--arcSkewX) * -1);
+
+	transform: rotateZ($arcStartPosition) rotateX(0deg) skewX(var(--arcSkewX));
+	background-color: rgba(244, 234, 228, 1);
+
+	transition: transform 1000ms linear;
+
+	&.halfThrough {
+		transform: rotateZ($arcStartPosition) rotateX(180deg) skewX(var(--arcSkewX));
+	}
 }
+
 .arc:before {
 	display: block;
-	border: solid $arcThickness $arcColor;
+	border: solid $arcThickness rgba(244, 234, 228, 1);
 	width: 200%; height: 200%;
 
 	box-sizing: border-box;
 	border-radius: 50%;
-	transform: skewX($arcSkewXfix);
+	transform: skewX(var(--arcSkewXfix));
 	content: '';
 }
