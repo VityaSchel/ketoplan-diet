@@ -8,6 +8,7 @@ import ResumeStatistics from '@/widgets/plan-result/ui/resume-statistics'
 import PlanPromo from '@/widgets/plan-result/ui/plan-promo'
 import Reviews from '@/widgets/plan-result/ui/reviews'
 import WhatYouGet from '@/widgets/plan-result/ui/what-you-get'
+import Timer from '@/widgets/plan-result/ui/timer'
 
 export default function PlanResultPage() {
   const [results, setResults] = React.useState<KetoPlanResume | null>(null)
@@ -32,6 +33,7 @@ export default function PlanResultPage() {
       {results !== null && (
         <PlanResultPageWrapper>
           <MobileScreenTheme theme='light' />
+          <Timer />
           <Fold />
           <ResumeStatistics data={results} />
           <PlanPromo />
