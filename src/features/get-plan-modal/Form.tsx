@@ -6,8 +6,10 @@ import Button from '@/shared/ui/button'
 import Input from '@/shared/ui/input'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { fetchAPI } from '@/shared/api'
+import { PaymentRequired, SendPlanMailBody } from '@/shared/api/ApiDefinitions'
 
-export default function EmailDialogForm(props: { onSubmit: () => any }) {
+export default function EmailDialogForm(props: { onSubmit: (paymentId: string) => any }) {
   return (
     <Formik
       initialValues={{ email: '' }}
@@ -19,9 +21,11 @@ export default function EmailDialogForm(props: { onSubmit: () => any }) {
         })
       }
       validateOnChange={false}
-      onSubmit={(values) => {
-        // TODO: add logic here
-        props.onSubmit()
+      onSubmit={async (values) => {
+        const email = await fetchAPI<PaymentRequired>('/send_plan_mail', 'POST', {
+          email: values.email
+        } satisfies SendPlanMailBody)
+        props.onSubmit(email.response.paymentId)
       }}
     >
       {({
