@@ -1,6 +1,6 @@
 import '@/shared/styles/globals.scss'
 import type { AppProps } from 'next/app'
-import AppBar from "@/shared/ui/app-bar"
+import AppBar from "@/shared/ui/appbar"
 import cx from 'classnames'
 import { interFont, playfairDisplayFont } from '@/shared/fonts'
 import ThemeContextContainer from '@/shared/ui/theme-context-container'

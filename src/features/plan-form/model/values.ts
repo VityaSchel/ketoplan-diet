@@ -17,6 +17,8 @@ export type PlanFormValues = {
   targetWeight: number | null
 }
 
+export type PlanFormValuesValidated = { [P in keyof PlanFormValues]: Required<NonNullable<PlanFormValues[P]>> } //NonNullable<PlanFormValues>
+
 export const planFormValues: PlanFormValues = { 
   gender: null,
   activityInterval: null,

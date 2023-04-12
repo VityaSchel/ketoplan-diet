@@ -4,7 +4,7 @@ import cx from 'classnames'
 export default function Button({ children, variant = 'contained', ellipsed, className, ...otherProps }: React.PropsWithChildren<{
   variant?: 'contained' | 'tonal' | 'text', 
   ellipsed?: boolean
-  className: string
+  className?: string
 }> & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button type='button' className={
