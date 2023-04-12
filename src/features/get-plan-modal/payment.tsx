@@ -29,6 +29,19 @@ const Payment = React.forwardRef((props, ref) => {
         pay.response.redirectParams ? Object.fromEntries(pay.response.redirectParams.map(({ key, value }) => [key, value])) : {},
         pay.response.redirectMethod
       )
+      // TODO: do not remove!
+      // const payment3ds = window.open('3ds', '3ds', 'width=300,height=600')
+      // if(!payment3ds) return false
+      // payment3ds.addEventListener('message', event => {
+      //   if(
+      //     typeof event.data === 'object' 
+      //     && Object.hasOwn(event.data, 'type')
+      //     && event.data.type === 'payment_completed' 
+      //     && Object.hasOwn(event.data, 'payment_status')
+      //   ) {
+      //     return event.data.payment_status === 'success'
+      //   }
+      // })
       return true
     } else {
       console.error('Expected 201 http status code')

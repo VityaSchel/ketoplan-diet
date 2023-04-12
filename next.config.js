@@ -14,7 +14,14 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true
-  }
+  },
+  redirects: [
+    {
+      source: '/',
+      destination: '/plan/quiz',
+      permanent: false
+    }
+  ]
 }
 
 module.exports = nextConfig
