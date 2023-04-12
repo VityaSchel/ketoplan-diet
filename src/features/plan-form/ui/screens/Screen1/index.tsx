@@ -5,7 +5,7 @@ import GenderButton from './GenderButton'
 import Male from '@/assets/plan-form-screens/Male.png'
 import Female from '@/assets/plan-form-screens/Female.png'
 import { useFormikContext } from 'formik'
-import MobileScreenTheme from '@/shared/ScreenTheme'
+import MobileScreenTheme from '@/shared/ui/screen-theme'
 
 export const ValidationSchema = {
   gender: Yup.string()

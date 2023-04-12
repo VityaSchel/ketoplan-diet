@@ -1,5 +1,5 @@
 import styles from './styles.module.scss'
-import Button from '@/shared/Button'
+import Button from '@/shared/ui/button'
 import RightArrow from './assets/right-arrow.svg'
 import { Checkmark } from './checkmark'
 

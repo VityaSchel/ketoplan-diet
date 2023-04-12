@@ -1,5 +1,5 @@
 import KetoPlanLogo from '@/assets/KetoPlanLogo.svg'
-import { ScreenThemeContext } from '@/shared/ThemeContextContainer'
+import { ScreenThemeContext } from '@/shared/ui/theme-context-container'
 import { useContext } from 'react'
 import styles from './styles.module.scss'
 import cx from 'classnames'

@@ -1,5 +1,5 @@
 import styles from './styles.module.scss'
-import Button from '@/shared/Button'
+import Button from '@/shared/ui/button'
 import Image from 'next/image'
 import FishImage from '@/assets/plan-result/fish.png'
 import FruitImage from '@/assets/plan-result/fruit.png'
