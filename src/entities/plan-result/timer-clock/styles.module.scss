@@ -1,7 +1,7 @@
 @use '@/shared/styles/variables.scss' as variables;
 
 $arcThickness: 3px;
-$circleSize: 64px;
+$circleSize: 60px;
 
 $arcStartPosition: 90deg;
 
@@ -44,7 +44,7 @@ $circleOutterSize: $circleSize + $arcThickness*2;
 	content: '';
 	display: block;
 	position: relative;
-	width: $circleSize; height: $circleSize;
+	width: $circleSize - 0.5px; height: $circleSize - 0.5px;
 	border-radius: 50%;
 	background: #fff;
 	top: $arcThickness;
