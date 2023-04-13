@@ -16,8 +16,8 @@ Yup.setLocale(yupRuLocale)
 export const ValidationSchema = {
   age: Yup.number().min(1, 'Минимум 1').max(100, 'Максимум 100').required('Обязательное поле'),
   height: Yup.number().min(100, 'Минимум 100').max(200, 'Максимум 200').required('Обязательное поле'),
-  currentWeight: Yup.number().min(50, 'Минимум 50').max(200, 'Максимум 200').required('Обязательное поле'),
-  targetWeight: Yup.number().min(50, 'Минимум 50').max(200, 'Максимум 200').required('Обязательное поле'),
+  currentWeight: Yup.number().min(30, 'Минимум 30').max(200, 'Максимум 200').required('Обязательное поле'),
+  targetWeight: Yup.number().min(30, 'Минимум 30').max(200, 'Максимум 200').required('Обязательное поле'),
 }
 
 export default function Screen8(props: { onContinue: () => any, onGoBack: () => any }) {
@@ -61,7 +61,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           label='Текущий вес'
           placeholder='Вес, кг'
           type='number'
-          inputProps={{ min: 50, max: 200 }}
+          inputProps={{ min: 30, max: 200 }}
           name='currentWeight'
           onChange={formik.handleChange}
           onEnter={isSubmitDisabled ? (e: any) => {} : handleContinue}
@@ -71,7 +71,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           label='Желаемый вес'
           placeholder='Вес, кг'
           type='number'
-          inputProps={{ min: 50, max: 200 }}
+          inputProps={{ min: 30, max: 200 }}
           name='targetWeight'
           onChange={formik.handleChange}
           onEnter={isSubmitDisabled ? (e: any) => {} : handleContinue}

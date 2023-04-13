@@ -20,3 +20,5 @@ export const planValidationSchema =
     ...Screen7Validation,
     ...Screen8Validation,
   })
+
+planValidationSchema.typeError('Обязательное поле')
