@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from '@/widgets/head'
 import { useRouter } from 'next/router'
 import { KetoPlanResume } from '@/widgets/plan-result/model/ketoplan-resume'
 import { PlanResultPageWrapper } from '@/widgets/plan-result-page-wrapper'
@@ -30,6 +31,9 @@ export default function PlanResultPage() {
 
   return (
     <>
+      <Head
+        title='Результат — Кето-диета'
+      />
       {results !== null && (
         <PlanResultPageWrapper>
           <MobileScreenTheme theme='light' />

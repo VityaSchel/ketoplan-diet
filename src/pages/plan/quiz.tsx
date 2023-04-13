@@ -13,7 +13,7 @@ export default function PlanPage() {
   return (
     <>
       <Head 
-        title='План'
+        title='Опрос'
       />
       <PlanFormContainer 
         onSubmit={results => router.push({
