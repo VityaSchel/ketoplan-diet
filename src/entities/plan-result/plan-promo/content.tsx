@@ -3,7 +3,7 @@ import Button from '@/shared/ui/button'
 import RightArrow from './assets/right-arrow.svg'
 import { Checkmark } from './checkmark'
 
-export function Content() {
+export function Content(props: { onOpenDialog: () => any }) {
   return (
     <div className={styles.content}>
       <h1>Индивидуальный план питания</h1>
@@ -13,7 +13,9 @@ export function Content() {
         <li><Checkmark /><span><b>75%</b> жиры, <b>25%</b> белки, <b>5%</b> углеводы</span></li>
         <li><Checkmark /><span><b>4 недельный</b> план питания</span></li>
       </ul>
-      <Button variant='text' className={styles.getPlanButton}>Получить план <RightArrow /></Button>
+      <Button variant='text' className={styles.getPlanButton} onClick={props.onOpenDialog}>
+        Получить план <RightArrow />
+      </Button>
     </div>
   )
 }

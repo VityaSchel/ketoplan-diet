@@ -20,7 +20,7 @@ export default function GetPlanModal(props: { children: React.ReactNode }) {
   )
 }
 
-function EmailDialog(props: { open: boolean, onClose: () => any }) {
+export function EmailDialog(props: { open: boolean, onClose: () => any }) {
   const [screen, setScreen] = React.useState<'form' | 'result'>('form')
   const paymentRef = React.useRef<PaymentRefMethods>()
 

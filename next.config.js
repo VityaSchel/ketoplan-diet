@@ -15,7 +15,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
-  redirects: [
+  redirects: async () => [
     {
       source: '/',
       destination: '/plan/quiz',
