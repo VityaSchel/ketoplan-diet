@@ -31,7 +31,12 @@ export default function PlanFormScreen(props: {
         <div className={styles.rightColumn}>
           <div className={styles.imageContainer}>
             <div className={styles.image}>
-              <Image src={props.image} alt='Декорационное изображение к форме' fill />
+              <Image 
+                src={props.image} 
+                alt='Декорационное изображение к форме' 
+                fill 
+                placeholder='blur'
+              />
             </div>
           </div>
           <div className={styles.screenProgressBackground}>
