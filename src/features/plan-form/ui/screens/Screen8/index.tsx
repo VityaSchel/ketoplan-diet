@@ -14,10 +14,10 @@ import { ru as yupRuLocale } from 'yup-locales'
 Yup.setLocale(yupRuLocale)
 
 export const ValidationSchema = {
-  age: Yup.number().min(1, 'Минимум 1').max(100, 'Максимум 100').required('Обязательное поле'),
-  height: Yup.number().min(100, 'Минимум 100').max(200, 'Максимум 200').required('Обязательное поле'),
-  currentWeight: Yup.number().min(30, 'Минимум 30').max(200, 'Максимум 200').required('Обязательное поле'),
-  targetWeight: Yup.number().min(30, 'Минимум 30').max(200, 'Максимум 200').required('Обязательное поле'),
+  age: Yup.number().min(1, 'Минимум 1').max(100, 'Максимум 100').required('Обязательное поле').typeError('Обязательное поле'),
+  height: Yup.number().min(100, 'Минимум 100').max(200, 'Максимум 200').required('Обязательное поле').typeError('Обязательное поле'),
+  currentWeight: Yup.number().min(30, 'Минимум 30').max(200, 'Максимум 200').required('Обязательное поле').typeError('Обязательное поле'),
+  targetWeight: Yup.number().min(30, 'Минимум 30').max(200, 'Максимум 200').required('Обязательное поле').typeError('Обязательное поле'),
 }
 
 export default function Screen8(props: { onContinue: () => any, onGoBack: () => any }) {
