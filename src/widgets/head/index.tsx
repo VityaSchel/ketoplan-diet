@@ -7,7 +7,7 @@ export default function CustomHead({
 }: React.PropsWithChildren<{ title: string }>) {
   return (
     <Head>
-      <title>{title} — Кето-диета</title>
+      <title>{title + ' — Кето-диета'}</title>
       {children}
     </Head>
   )

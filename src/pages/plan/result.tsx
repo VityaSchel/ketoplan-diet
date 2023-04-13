@@ -32,7 +32,7 @@ export default function PlanResultPage() {
   return (
     <>
       <Head
-        title='Результат — Кето-диета'
+        title='Результат'
       />
       {results !== null && (
         <PlanResultPageWrapper>
