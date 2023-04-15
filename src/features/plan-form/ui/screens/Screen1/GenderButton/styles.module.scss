@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use '@/shared/styles/variables.scss' as variables;
+
 .gender {
   all: unset;
   display: flex;
@@ -10,12 +13,18 @@
     outline: auto;
   }
 
+  .image {
+    transform: scale(1);
+    transition: transform 120ms ease-in-out;
+  }
+
   .label {
     display: flex;
     align-items: center;
-    color: var(--primary-text-color);
+    color: color.scale(variables.$primary-text-color, $lightness: 40%, $saturation: -100%);
     gap: 8px;
     font-size: 24px;
+    transition: color 120ms ease-in-out;
 
     svg {
       min-width: 28px;
@@ -23,6 +32,16 @@
 
     @media screen and (max-width: 768px) {
       font-size: 16px;
+    }
+  }
+
+  &:hover {
+    .image {
+      transform: scale(1.03) !important;
+    }
+
+    .label {
+      color: variables.$primary-text-color;
     }
   }
 }

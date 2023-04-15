@@ -7,6 +7,7 @@ export default function GenderButton(props: { image: { src: StaticImageData, alt
   return (
     <button className={styles.gender} onClick={props.onClick} type='button'>
       <Image 
+        className={styles.image}
         src={props.image.src}
         alt={props.image.alt}
       />
