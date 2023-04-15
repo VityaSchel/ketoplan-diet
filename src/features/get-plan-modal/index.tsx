@@ -30,10 +30,15 @@ export function EmailDialog(props: { open: boolean, onClose: () => any }) {
     }
   }, [props.open])
 
-  const handlePayment = async (paymentId: string) => {
+  const handlePayment = async (paymentId: string, email: string) => {
     if(!paymentRef.current) throw new Error('Payment ref is undefined')
     const subject = await fetchAPI<CloudpaymentsPaymentResponse>(`/payments/${paymentId}/cloudpayments`, 'GET')
-    paymentRef.current.open(paymentId, { publicID: subject.response.cloudpaymentsPublicId, name: 'Кетоплановая диета', price: subject.response.amount })
+    console.log('email',email)
+    paymentRef.current.open(paymentId, email, { 
+      publicID: subject.response.cloudpaymentsPublicId, 
+      name: 'Кетоплановая диета', 
+      price: subject.response.amount + ' ₽'
+    })
     // TODO: after 3ds, setScreen('result')
   }
 

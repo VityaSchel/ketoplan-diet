@@ -1,21 +1,25 @@
 import React from 'react'
-import Checkout, { CheckoutProps } from '@x5io/checkout'
+import Checkout, { CheckoutProps, CheckoutRefProperties } from '@x5io/checkout'
 import { PayCloudpaymentsResponse } from '@/shared/api/ApiDefinitions'
 import { fetchAPI } from '@/shared/api'
 import { makeRedirect } from '@/shared/utils'
 
 export type PaymentRefMethods = {
-  open: (paymentID: string, subject: CheckoutProps['subject']) => any
+  open: (paymentID: string, email: string, subject: CheckoutProps['subject']) => any
 }
 
 const Payment = React.forwardRef((props, ref) => {
   const [subject, setSubject] = React.useState<null | CheckoutProps['subject']>(null)
   const [paymentID, setPaymentID] = React.useState<string>('')
+  const [email, setEmail] = React.useState('')
+  const checkoutRef = React.useRef<CheckoutRefProperties>()
 
   React.useImperativeHandle(ref, () => ({
-    open(paymentID: string, subject: CheckoutProps['subject']) {
-      setSubject(subject)
+    open(paymentID: string, email: string, subject: CheckoutProps['subject']) {
+      setEmail(email)
       setPaymentID(paymentID)
+      setSubject(subject)
+      if(checkoutRef) initializeCheckout()
     } 
   }))
 
@@ -49,8 +53,17 @@ const Payment = React.forwardRef((props, ref) => {
     }
   }
 
+  React.useEffect(() => initializeCheckout(), [email, checkoutRef])
+
+  const initializeCheckout = () => {
+    if(checkoutRef?.current && email) {
+      checkoutRef.current.initialize({ email })
+    }
+  }
+
   return (<>
     {subject && <Checkout
+      ref={checkoutRef}
       subject={subject}
       onRequest={handleRequest}
     />}
