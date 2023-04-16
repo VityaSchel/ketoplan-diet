@@ -12,7 +12,7 @@ export function PlanFormContainer({
 }: { onSubmit: (results: KetoPlanResume) => any }) {
   return (
     <>
-      {/* FOR DEVELOPMENT */}
+      {/* FOR DEVELOPMENT
       <button style={{ zIndex: 100, position: 'absolute' }} onClick={() => {
         onSubmit({
           imt: 20.29,
@@ -22,7 +22,7 @@ export function PlanFormContainer({
           achievableWeightIn28Days: 55
         })
       }}>Skip</button>
-      {/* FOR DEVELOPMENT */}
+       FOR DEVELOPMENT */}
       <Formik
         initialValues={planFormValues}
         validate={async (values) => {
