@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './styles.module.scss'
 import PlanFormScreen from '@/features/plan-form/ui/screens'
 import Screen8Image from '@/assets/plan-form-screens/Screen8.png'
@@ -10,6 +11,7 @@ import GoBackArrow from '../GoBackArrow.svg'
 import MobileScreenTheme from '@/shared/ui/screen-theme'
 import Input from '@/shared/ui/input'
 import { ru as yupRuLocale } from 'yup-locales'
+import { useRouter } from 'next/router'
 
 Yup.setLocale(yupRuLocale)
 
@@ -23,10 +25,15 @@ export const ValidationSchema = {
 export default function Screen8(props: { onContinue: () => any, onGoBack: () => any }) {
   const formik = useFormikContext<PlanFormValues>()
   const isSubmitDisabled = Boolean(formik.errors.age || formik.errors.height || formik.errors.currentWeight || formik.errors.targetWeight)
+  const router = useRouter()
 
   const handleContinue = (e: React.KeyboardEvent<HTMLDivElement>) => {
     props.onContinue()
   }
+
+  React.useEffect(() => {
+    router.prefetch('/plan/result')
+  }, [])
 
   return (
     <PlanFormScreen

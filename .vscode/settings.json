@@ -10,5 +10,8 @@
   "eslint.validate": [
     "javascript"
   ],
-  "netlify.site_id": "1db39883-cce2-4645-84de-7ed2d3605cc0"
+  "netlify.site_id": "1db39883-cce2-4645-84de-7ed2d3605cc0",
+  "files.watcherExclude": {
+    "**/target": true
+  }
 }

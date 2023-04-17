@@ -9,14 +9,21 @@ import Screen6 from './screens/Screen6'
 import Screen7 from './screens/Screen7'
 import Screen8 from './screens/Screen8'
 import { PlanFormValues } from '../model/values'
+// import { useRouter } from 'next/router'
 
 export function PlanForm(props: { formik: FormikProps<PlanFormValues> }) {
   const [screen, setScreen] = React.useState<number>(0)
+  // const router = useRouter()
 
   const handleGo = (nextScreen: number) => () => {
     setScreen(nextScreen)
     window.scrollTo(0, 0)
   }
+
+  // Could not prefetch next screen because they're on the same page
+  // React.useEffect(() => {
+  //   router.prefetch()
+  // }, [screen])
 
   return (
     <form>
