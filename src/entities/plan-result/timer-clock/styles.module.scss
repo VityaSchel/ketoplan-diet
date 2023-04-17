@@ -21,6 +21,8 @@ $circleOutterSize: $circleSize + $arcThickness*2;
 	border-radius: 50%;
 	background: variables.$button-default-color;
 	overflow: hidden;
+	clip-path: circle();
+	box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.2);
   
   .text {
     text-align: center;
