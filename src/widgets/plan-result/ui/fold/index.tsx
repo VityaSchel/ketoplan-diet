@@ -35,10 +35,10 @@ function Decorations() {
         </span>
         <span className={styles.dishes}>
           <span className={styles.fish}>
-            <Image src={FishImage} alt='' fill />
+            <Image src={FishImage} alt='' fill priority />
           </span>
           <span className={styles.fruit}>
-            <Image src={FruitImage} alt='' fill />
+            <Image src={FruitImage} alt='' fill priority />
           </span>
         </span>
       </span>

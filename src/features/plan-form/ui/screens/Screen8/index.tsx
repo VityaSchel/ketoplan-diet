@@ -2,7 +2,7 @@ import styles from './styles.module.scss'
 import PlanFormScreen from '@/features/plan-form/ui/screens'
 import Screen8Image from '@/assets/plan-form-screens/Screen8.png'
 import * as Yup from 'yup'
-import Select from '@/shared/ui/select'
+import CircularProgress from '@mui/material/CircularProgress'
 import { useFormikContext } from 'formik'
 import { PlanFormValues } from '@/features/plan-form/model/values'
 import Button from '@/shared/ui/button'
@@ -44,6 +44,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 1, max: 100 }}
           name='age'
           onChange={formik.handleChange}
+          disabled={formik.isSubmitting}
           onEnter={isSubmitDisabled ? (e: any) => {} : handleContinue}
           error={formik.errors.age}
         />
@@ -54,6 +55,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 100, max: 200 }}
           name='height'
           onChange={formik.handleChange}
+          disabled={formik.isSubmitting}
           onEnter={isSubmitDisabled ? (e: any) => {} : handleContinue}
           error={formik.errors.height}
         />
@@ -64,6 +66,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 30, max: 200 }}
           name='currentWeight'
           onChange={formik.handleChange}
+          disabled={formik.isSubmitting}
           onEnter={isSubmitDisabled ? (e: any) => {} : handleContinue}
           error={formik.errors.currentWeight}
         />
@@ -74,13 +77,14 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
           inputProps={{ min: 30, max: 200 }}
           name='targetWeight'
           onChange={formik.handleChange}
+          disabled={formik.isSubmitting}
           onEnter={isSubmitDisabled ? (e: any) => {} : handleContinue}
           error={formik.errors.targetWeight}
         />
       </div>
       <div className={styles.actions}>
-        <Button variant='contained' onClick={props.onContinue} disabled={isSubmitDisabled}>Продолжить</Button>
-        <Button variant='text' onClick={props.onGoBack}><GoBackArrow /> Назад</Button>
+        <Button variant='contained' onClick={props.onContinue} disabled={isSubmitDisabled || formik.isSubmitting}>{formik.isSubmitting ? <CircularProgress size={30} /> : 'Продолжить'}</Button>
+        <Button variant='text' onClick={props.onGoBack} disabled={isSubmitDisabled}><GoBackArrow /> Назад</Button>
       </div>
     </PlanFormScreen>
   )

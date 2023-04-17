@@ -25,7 +25,6 @@ export default function EmailDialogForm(props: { onSubmit: (paymentId: string, e
         const email = await fetchAPI<PaymentRequired>('/send_plan_mail', 'POST', {
           email: values.email
         } satisfies SendPlanMailBody)
-        console.log(values)
         props.onSubmit(email.response.paymentId, values.email)
       }}
     >
