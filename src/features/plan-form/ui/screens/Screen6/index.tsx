@@ -8,12 +8,6 @@ import { PlanFormValues } from '@/features/PlanForm'
 import Button from '@/shared/ui/button'
 import GoBackArrow from '../GoBackArrow.svg'
 import MobileScreenTheme from '@/shared/ui/screen-theme'
-import ButterIcon from './assets/butter.png'
-import CheeseIcon from './assets/cheese.png'
-import CoconutIcon from './assets/coconut.png'
-import CottageIcon from './assets/cottage.png'
-import EggsIcon from './assets/eggs.png'
-import NutsIcon from './assets/nuts.png'
 
 export const ValidationSchema = {
   dayType: Yup.string()

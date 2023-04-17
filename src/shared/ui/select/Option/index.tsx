@@ -21,7 +21,7 @@ export default function Option(props: { selected: boolean, multi: boolean, onCli
         {props.children}
       </span>
       <span className={styles.icon}>
-        {props.icon && <Image src={props.icon} fill alt='' priority />}
+        {props.icon && <img src={props.icon.src} alt='' />}
       </span>
     </button>
   )

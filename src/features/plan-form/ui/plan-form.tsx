@@ -13,16 +13,21 @@ import { PlanFormValues } from '../model/values'
 export function PlanForm(props: { formik: FormikProps<PlanFormValues> }) {
   const [screen, setScreen] = React.useState<number>(0)
 
+  const handleGo = (nextScreen: number) => () => {
+    setScreen(nextScreen)
+    window.scrollTo(0, 0)
+  }
+
   return (
     <form>
       {[
-        <Screen1 key={1} onContinue={() => setScreen(1)} />,
-        <Screen2 key={2} onContinue={() => setScreen(2)} onGoBack={() => setScreen(0)} />,
-        <Screen3 key={3} onContinue={() => setScreen(3)} onGoBack={() => setScreen(1)} />,
-        <Screen4 key={4} onContinue={() => setScreen(4)} onGoBack={() => setScreen(2)} />,
-        <Screen5 key={5} onContinue={() => setScreen(5)} onGoBack={() => setScreen(3)} />,
-        <Screen6 key={6} onContinue={() => setScreen(6)} onGoBack={() => setScreen(4)} />,
-        <Screen7 key={6} onContinue={() => setScreen(7)} onGoBack={() => setScreen(5)} />,
+        <Screen1 key={1} onContinue={handleGo(1)} />,
+        <Screen2 key={2} onContinue={handleGo(2)} onGoBack={handleGo(0)} />,
+        <Screen3 key={3} onContinue={handleGo(3)} onGoBack={handleGo(1)} />,
+        <Screen4 key={4} onContinue={handleGo(4)} onGoBack={handleGo(2)} />,
+        <Screen5 key={5} onContinue={handleGo(5)} onGoBack={handleGo(3)} />,
+        <Screen6 key={6} onContinue={handleGo(6)} onGoBack={handleGo(4)} />,
+        <Screen7 key={6} onContinue={handleGo(7)} onGoBack={handleGo(5)} />,
         <Screen8 key={7} onContinue={props.formik.handleSubmit} onGoBack={() => setScreen(6)} />,
       ][screen]}
     </form>
