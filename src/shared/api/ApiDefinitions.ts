@@ -46,29 +46,50 @@ export interface CloudpaymentsReceipt {
 }
 
 export interface CvBasedQuestionnaireBody {
-  activityInterval: string;
+  activityInterval:
+    | "MINIMAL"
+    | "FREQUENT_WALKS"
+    | "EXERCISE_ONCE_PER_WEEK"
+    | "EXERCISE_EVERY_OTHER_DAY"
+    | "EXERCISE_EVERYDAY";
   /**
    * @min 5
    * @max 100
    */
   age: number;
-  badHabits: string[];
+  badHabits: (
+    | "LACK_OF_SLEEP"
+    | "NIGHT_FOOD"
+    | "SALT_OVERCONSUMPTION"
+    | "SUGAR_OVERCONSUMPTION"
+    | "SODA_OVERCONSUMPTION"
+  )[];
   currentWeight: number;
-  dayType: string;
+  dayType: "OFFICE_WORK" | "OFFICE_FREELY" | "ON_FEET" | "MANUAL_LABOR" | "HOME";
   gender: "FEMALE" | "MALE";
   height: number;
-  otherFood: string[];
-  proteinSources: string[];
+  otherFood: ("EGGS" | "NUTS" | "CHEESE" | "COTTAGE" | "BUTTER" | "COCONUT")[];
+  proteinSources: ("CHICKEN" | "PORK" | "BEEF" | "TURKEY" | "BEACON" | "NO_MEAT" | "FISH" | "SEAFOOD")[];
   targetWeight: number;
-  vegetables: string[];
+  vegetables: (
+    | "BROCCOLI"
+    | "MUSHROOMS"
+    | "ZUCCHINI"
+    | "CAULIFLOWER"
+    | "AVOCADO"
+    | "ASPARAGUS"
+    | "BELL PEPPER"
+    | "EGGPLANT"
+  )[];
 }
 
 export interface CvBasedQuestionnaireResponse {
-  AchievableWeightAfter28Days: number;
-  RecommendedAmountKcal: number;
-  RecommendedAmountWater: number;
+  achievableWeightAfter28Days: number;
+  foodType: "dump" | "gain";
   imt: number;
   metabolicAge: number;
+  recommendedAmountKcal: number;
+  recommendedAmountWater: number;
 }
 
 export interface ErrorResponse {
@@ -80,6 +101,9 @@ export interface PayCloudpaymentsBody {
 }
 
 export interface PayCloudpaymentsResponse {
+  MD: string;
+  PaReq: string;
+  TermUrl: string;
   /** @example "POST" */
   redirectMethod: string;
   redirectParams?: {
@@ -322,10 +346,10 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title CoursesService
+ * @title KetoPlan
  * @version production
  *
- * Courses service
+ * KetoPlan
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
   cvBasedQuestionnaire = {

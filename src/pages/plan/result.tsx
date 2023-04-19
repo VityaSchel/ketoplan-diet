@@ -10,6 +10,7 @@ import PlanPromo from '@/widgets/plan-result/ui/plan-promo'
 import Reviews from '@/widgets/plan-result/ui/reviews'
 import WhatYouGet from '@/widgets/plan-result/ui/what-you-get'
 import Timer from '@/widgets/plan-result/ui/timer'
+import { ResumeContext } from '@/shared/context/resume-context'
 
 export default function PlanResultPage() {
   const [results, setResults] = React.useState<KetoPlanResume | null>(null)
@@ -35,15 +36,17 @@ export default function PlanResultPage() {
         title='Результат'
       />
       {results !== null && (
-        <PlanResultPageWrapper>
-          <MobileScreenTheme theme='light' />
-          <Timer />
-          <Fold />
-          <ResumeStatistics data={results} />
-          <PlanPromo />
-          <Reviews />
-          <WhatYouGet />
-        </PlanResultPageWrapper>
+        <ResumeContext.Provider value={results}>
+          <PlanResultPageWrapper>
+            <MobileScreenTheme theme='light' />
+            <Timer />
+            <Fold />
+            <ResumeStatistics />
+            <PlanPromo />
+            <Reviews />
+            <WhatYouGet />
+          </PlanResultPageWrapper>
+        </ResumeContext.Provider>
       )}
     </>
   )

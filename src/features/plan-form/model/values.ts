@@ -8,8 +8,8 @@ export type PlanFormValues = {
     'EXERCISE_EVERYDAY' | null
   proteinSources: ('CHICKEN' | 'PORK' | 'BEEF' | 'TURKEY' | 'BEACON' | 'NO_MEAT' | 'FISH' | 'SEAFOOD')[]
   vegetables: ('BROCCOLI' | 'MUSHROOMS' | 'ZUCCHINI' | 'CAULIFLOWER' | 'AVOCADO' | 'ASPARAGUS' | 'BELL PEPPER' | 'EGGPLANT')[]
-  otherFood: ('EGGS' | 'NUTS' | 'CHEESE' | 'COTTAGE CHEESE' | 'BUTTER' | 'COCONUT')[]
-  dayType: 'OFFICE_WORK' | 'OFFICE_FREELY' | 'ON_FEET' | 'MANUAL_LABOR' | 'HOME' | 'NONE' | null
+  otherFood: ('EGGS' | 'NUTS' | 'CHEESE' | 'COTTAGE' | 'BUTTER' | 'COCONUT')[]
+  dayType: 'OFFICE_WORK' | 'OFFICE_FREELY' | 'ON_FEET' | 'MANUAL_LABOR' | 'HOME' | null
   badHabits: ('LACK_OF_SLEEP' | 'NIGHT_FOOD' | 'SALT_OVERCONSUMPTION' | 'SUGAR_OVERCONSUMPTION' | 'SODA_OVERCONSUMPTION')[]
   age: number | null
   height: number | null

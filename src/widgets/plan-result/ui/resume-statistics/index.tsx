@@ -1,11 +1,14 @@
-import { KetoPlanResume } from '@/widgets/plan-result/ui/plan-result-page-wrapper'
+import React from 'react'
 import { Chip } from '@mui/material'
 import Image from 'next/image'
 import styles from './styles.module.scss'
 import Orange from './assets/orange.png'
 import GetPlanModal from '@/features/get-plan-modal'
+import { ResumeContext } from '@/shared/context/resume-context'
 
-export default function ResumeStatistics(props: { data: KetoPlanResume }) {
+export default function ResumeStatistics() {
+  const results = React.useContext(ResumeContext)
+
   return (
     <div className={styles.statistics}>
       <div className={styles.heading}>
@@ -18,23 +21,23 @@ export default function ResumeStatistics(props: { data: KetoPlanResume }) {
           <tbody>
             <tr>
               <td>Ваш ИМТ</td>
-              <td>{props.data.imt} {props.data.imt < 30 && <Chip label='Норма' size='small' color='success' />}</td>
+              <td>{results.imt} {results.imt < 30 && <Chip label='Норма' size='small' color='success' />}</td>
             </tr>
             <tr>
               <td>Метаболический возраст</td>
-              <td>{props.data.mAge} лет</td>
+              <td>{results.mAge} лет</td>
             </tr>
             <tr>
               <td>Рекомендованное количество ккал</td>
-              <td>{props.data.recommendedKcal.min}-{props.data.recommendedKcal.max} ккал</td>
+              <td>{results.recommendedKcal.min}-{results.recommendedKcal.max} ккал</td>
             </tr>
             <tr>
               <td>Рекомендуемое количество воды</td>
-              <td>{props.data.recommendedWater} л</td>
+              <td>{results.recommendedWater} л</td>
             </tr>
             <tr>
               <td>Достижимый вес после 28 дней</td>
-              <td>{props.data.achievableWeightIn28Days} кг</td>
+              <td>{results.achievableWeightIn28Days} кг</td>
             </tr>
           </tbody>
         </table>

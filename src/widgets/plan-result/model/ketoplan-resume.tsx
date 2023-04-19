@@ -4,4 +4,5 @@ export type KetoPlanResume = {
   recommendedKcal: { min: number, max: number }, 
   recommendedWater: number, 
   achievableWeightIn28Days: number 
+  foodType: 'dump' | 'gain'
 }

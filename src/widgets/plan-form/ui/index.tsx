@@ -59,9 +59,10 @@ export function PlanFormContainer({
               onSubmit({
                 imt: result.response.imt,
                 mAge: result.response.metabolicAge,
-                recommendedKcal: { min: result.response.RecommendedAmountKcal, max: result.response.RecommendedAmountKcal+100 },
-                recommendedWater: result.response.RecommendedAmountWater,
-                achievableWeightIn28Days: result.response.AchievableWeightAfter28Days
+                recommendedKcal: { min: result.response.recommendedAmountKcal, max: result.response.recommendedAmountKcal+100 },
+                recommendedWater: result.response.recommendedAmountWater,
+                achievableWeightIn28Days: result.response.achievableWeightAfter28Days,
+                foodType: result.response.foodType
               })
             } else {
               throw new Error('Expected 200 status code from /cv_based_questionnaire')
