@@ -29,6 +29,7 @@
       padding: 0px;
       gap: 32px;
       max-width: 100%;
+      overflow-x: auto;
 
       @media screen and (max-width: variables.$breakpoint-tablet) {
         flex-direction: column;

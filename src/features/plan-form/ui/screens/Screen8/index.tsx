@@ -36,6 +36,17 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
     router.prefetch('/plan/result')
   }, [])
 
+  React.useEffect(() => {
+    if(typeof window) {
+      if (formik.isSubmitting) {
+        window.scrollTo(0, 0)
+        window.document.querySelector('html')!.classList.add(styles.lock)
+      } else {
+        window.document.querySelector('html')!.classList.remove(styles.lock)
+      }
+    }
+  }, [formik.isSubmitting])
+
   return (
     <PlanFormScreen
       title='Ваши параметры'
@@ -94,7 +105,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
         <Button variant='contained' onClick={props.onContinue} disabled={isSubmitDisabled || formik.isSubmitting}>{formik.isSubmitting ? <CircularProgress size={30} /> : 'Продолжить'}</Button>
         <Button variant='text' onClick={props.onGoBack} disabled={isSubmitDisabled}><GoBackArrow /> Назад</Button>
       </div>
-      <LoadingResults open={true /*formik.isSubmitting*/} />
+      <LoadingResults open={formik.isSubmitting} />
     </PlanFormScreen>
   )
 }

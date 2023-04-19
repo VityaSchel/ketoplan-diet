@@ -1,4 +1,4 @@
-@mixin arcRoot($arcThickness: 3px, $circleSize: 60px, $majorArcColor: red, $minorArcColor: white, $innerColor: #eee, $textColor, $arcStartPosition: 90deg, $boxShadow: none) {
+@mixin arcRoot($arcThickness: 3px, $circleSize: 60px, $majorArcColor: red, $minorArcColor: white, $innerColor: #eee, $textColor, $arcStartPosition: 90deg, $boxShadow: none, $transtionDuration: 1000ms) {
 
   $circleOutterSize: $circleSize + $arcThickness*2;
 
@@ -63,7 +63,7 @@
     transform: rotateZ($arcStartPosition) rotateX(0deg) skewX(var(--arcSkewX));
     background-color: $majorArcColor;
 
-    transition: transform 1000ms linear;
+    transition: transform $transtionDuration linear;
   }
 
   &.halfThrough {
