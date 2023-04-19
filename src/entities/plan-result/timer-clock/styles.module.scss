@@ -2,5 +2,5 @@
 @import '@/shared/styles/utils/arc.scss';
 
 .circle {
-	@include arcRoot(3px, 60px, variables.$button-default-color, u, u, 90deg, inset 0px 0px 3px 0px rgba(0,0,0,0.2));	
+	@include arcRoot(3px, 60px, rgba(244, 234, 228, 1), variables.$button-default-color, #fff, variables.$button-default-color, 90deg, inset 0px 0px 3px 0px rgba(0,0,0,0.2));	
 }
