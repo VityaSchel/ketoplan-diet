@@ -4,7 +4,7 @@ import cx from 'classnames'
 export default function LoadingResults({ open }: {
   open: boolean
 }) {
-  const percentage = 0
+  const percentage = 30
 
   return (
     <div className={cx(styles.loading, { [styles.visible]: open })}>

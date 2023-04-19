@@ -1,4 +1,5 @@
 @use '@/shared/styles/variables.scss' as variables;
+@import '@/shared/styles/utils/arc.scss';
 
 .loading {
   display: flex;
@@ -29,11 +30,11 @@
     font-weight: 400;
     font-size: 64px;
     line-height: 110%;
-    /* or 70px */
-
     text-align: center;
     letter-spacing: 0.02em;
     font-feature-settings: 'pnum' on, 'lnum' on;
+
+    @include arcRoot(8px, 320px - 8px, variables.$primary-color, rgb(235, 230, 226), variables.$bg-main);
   }
 
   .label {
