@@ -12,6 +12,7 @@ import MobileScreenTheme from '@/shared/ui/screen-theme'
 import Input from '@/shared/ui/input'
 import { ru as yupRuLocale } from 'yup-locales'
 import { useRouter } from 'next/router'
+import LoadingResults from '@/features/loading-results'
 
 Yup.setLocale(yupRuLocale)
 
@@ -93,6 +94,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
         <Button variant='contained' onClick={props.onContinue} disabled={isSubmitDisabled || formik.isSubmitting}>{formik.isSubmitting ? <CircularProgress size={30} /> : 'Продолжить'}</Button>
         <Button variant='text' onClick={props.onGoBack} disabled={isSubmitDisabled}><GoBackArrow /> Назад</Button>
       </div>
+      <LoadingResults open={true /*formik.isSubmitting*/} />
     </PlanFormScreen>
   )
 }
