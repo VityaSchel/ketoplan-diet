@@ -95,8 +95,8 @@ install:
 
     - rm -rf .next/cache
 
-    - docker create --name main_page $DOCKER_REGISTRY_PATH:$CI_COMMIT_REF_NAME-$PROJECT_NAME
-    - docker cp main_page:/app/.next/cache $CI_PROJECT_DIR/.next/cache
+    - docker create --name quiz $DOCKER_REGISTRY_PATH:$CI_COMMIT_REF_NAME-$PROJECT_NAME
+    - docker cp quiz:/app/.next/cache $CI_PROJECT_DIR/.next/cache
 
     - docker push $DOCKER_REGISTRY_PATH:$CI_COMMIT_REF_NAME-$PROJECT_NAME
   rules:
@@ -107,14 +107,14 @@ install:
   environment:
     name: production-${PROJECT_NAME}
   variables:
-    COMPOSE_PROJECT_NAME: ${PROJECT_NAME}_main_page
+    COMPOSE_PROJECT_NAME: ${PROJECT_NAME}_quiz
     LANDING_IMAGE: $DOCKER_REGISTRY_PATH:$CI_COMMIT_REF_NAME-$PROJECT_NAME
     DOCKER_HOST: $DEPLOY_PROD_DOCKER_HOST
   before_script:
     - !reference [.ssh_init_template]
     - !reference [.docker_init_template]
   script:
-    - docker compose pull main_page
+    - docker compose pull quiz
 
     - docker compose up -d --wait
   rules:
