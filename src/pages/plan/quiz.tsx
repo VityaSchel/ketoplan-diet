@@ -22,7 +22,9 @@ export default function PlanPage() {
           query: { result: JSON.stringify(results) }
         }, '/plan/result')} 
       />
-      <Footer />
+      <div style={{ maxWidth: 840 }}>
+        <Footer />
+      </div>
     </>
   )
 }
