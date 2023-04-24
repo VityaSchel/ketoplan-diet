@@ -120,24 +120,6 @@ install:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
 
-.deploy_development_template:
-  stage: deploy
-  environment:
-    name: production-${PROJECT_NAME}
-  variables:
-    COMPOSE_PROJECT_NAME: ${PROJECT_NAME}_main_page
-    LANDING_IMAGE: $DOCKER_REGISTRY_PATH:$CI_COMMIT_REF_NAME-$PROJECT_NAME
-    DOCKER_HOST: $DEPLOY_PROD_DOCKER_HOST
-  before_script:
-    - !reference [.ssh_init_template]
-    - !reference [.docker_init_template]
-  script:
-    - docker compose pull main_page
-
-    - docker compose up -d --wait
-  rules:
-    - if: $CI_COMMIT_BRANCH == "dev"
-
 build_pranksale:
   extends: .build_production_template
   variables:
