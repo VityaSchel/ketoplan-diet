@@ -11,6 +11,7 @@ import Reviews from '@/widgets/plan-result/ui/reviews'
 import WhatYouGet from '@/widgets/plan-result/ui/what-you-get'
 import Timer from '@/widgets/plan-result/ui/timer'
 import { ResumeContext } from '@/shared/context/resume-context'
+import Footer from '@/widgets/footer'
 
 export default function PlanResultPage() {
   const [results, setResults] = React.useState<KetoPlanResume | null>(null)
@@ -48,6 +49,8 @@ export default function PlanResultPage() {
           </PlanResultPageWrapper>
         </ResumeContext.Provider>
       )}
+      <Footer />
+      <div style={{ height: 200 }} />
     </>
   )
 }

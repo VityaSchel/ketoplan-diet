@@ -11,7 +11,7 @@ export default function LoadingResults({ open }: {
     if (open) {
       const timeout = setTimeout(() => {
         setPercentage(Math.min(99, percentage + 1))
-      }, 10)
+      }, 30000/100)
       return () => clearTimeout(timeout)
     }
   }, [open, percentage, setPercentage])
