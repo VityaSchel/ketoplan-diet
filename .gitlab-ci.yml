@@ -120,7 +120,7 @@ install:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
 
-build_pranksale:
+build_cleanmindinfo:
   extends: .build_production_template
   variables:
     PROJECT_NAME: cleanmindinfo
@@ -137,7 +137,7 @@ build_pranksale:
 #    NEXT_PUBLIC_COMPANY_INN: 471910121614
 #    NEXT_PUBLIC_COMPANY_OGRNIP: 323470400012068
 
-deploy_production_pranksale:
+deploy_production_cleanmindinfo:
   extends: .deploy_production_template
   variables:
     PROJECT_NAME: cleanmindinfo
