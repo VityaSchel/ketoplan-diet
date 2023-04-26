@@ -120,10 +120,10 @@ install:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
 
-build_cleanmindinfo:
+build_ketoketopro:
   extends: .build_production_template
   variables:
-    PROJECT_NAME: cleanmindinfo
+    PROJECT_NAME: ketoketopro
 #    NEXT_PUBLIC_BACKEND_URL: https://api.prank.guru
 #    NEXT_PUBLIC_DATA_POLICY: https://docs.google.com/document/d/11ntwB7fqvLM1RYB1-W0y4046AkH3e8qhNb3qyWWETo8/edit?usp=sharing
 #    NEXT_PUBLIC_TARIFFS: https://cdn-pranks.x5.money/tariffs.pdf
@@ -137,8 +137,8 @@ build_cleanmindinfo:
 #    NEXT_PUBLIC_COMPANY_INN: 471910121614
 #    NEXT_PUBLIC_COMPANY_OGRNIP: 323470400012068
 
-deploy_production_cleanmindinfo:
+deploy_production_ketoketopro:
   extends: .deploy_production_template
   variables:
-    PROJECT_NAME: cleanmindinfo
-    VIRTUAL_HOST: cleanmind.info
+    PROJECT_NAME: ketoketopro
+    VIRTUAL_HOST: ketoketo.pro
