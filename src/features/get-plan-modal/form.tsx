@@ -7,30 +7,51 @@ import Input from '@/shared/ui/input'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { fetchAPI } from '@/shared/api'
-import { PaymentRequired, SendPlanMailBody } from '@/shared/api/ApiDefinitions'
+import { PayWidgetCloudpaymentsResponse, PaymentRequired, SendPlanMailBody } from '@/shared/api/ApiDefinitions'
 
-export default function EmailDialogForm(props: { onSubmit: (paymentId: string, email: string) => any }) {
+export default function EmailDialogForm(props: { onSuccess: () => any }) {
   return (
     <Formik
       initialValues={{ email: '' }}
       validationSchema={
         Yup.object({
           email: Yup.string()
-            .email()
-            .required()
+            .email('Введите почту')
+            .required('Введите почту')
         })
       }
       validateOnChange={false}
-      onSubmit={async (values) => {
-        const email = await fetchAPI<PaymentRequired>('/send_plan_mail', 'POST', {
-          email: values.email
-        } satisfies SendPlanMailBody)
-        props.onSubmit(email.response.paymentId, values.email)
+      onSubmit={(values) => {
+        return new Promise<void>(async resolve => {
+          const email = await fetchAPI<PaymentRequired>('/send_plan_mail', 'POST', {
+            email: values.email
+          } satisfies SendPlanMailBody)
+
+          const paymentId = email.response.paymentId
+
+          // @ts-expect-error idk how to fix this
+          await fetchAPI<PayWidgetCloudpaymentsResponse>(
+            `/payments/${paymentId}/set-email`, 'POST', { email: values.email }, {}, { parseBody: false })
+          const request = await fetchAPI<PayWidgetCloudpaymentsResponse>(`/payments/${paymentId}/cloudpayments/widget/pay`, 'GET')
+          // @ts-expect-error CP does not have types
+          const widget = new cp.CloudPayments()
+          widget.pay('charge',
+            request.response.cloudpayments,
+            {
+              onSuccess: () => {
+                props.onSuccess()
+                resolve()
+              },
+              onFail: () => { resolve() }
+            }
+          )
+        })
       }}
     >
       {({
         handleSubmit,
         handleChange,
+        isSubmitting,
         values, errors
       }) => (
         <>
@@ -49,7 +70,7 @@ export default function EmailDialogForm(props: { onSubmit: (paymentId: string, e
               onEnter={() => handleSubmit()}
             />
           </DialogContent>
-          <Button onClick={() => handleSubmit()}>Отправить</Button>
+          <Button disabled={isSubmitting} onClick={() => handleSubmit()}>Отправить</Button>
         </>
       )}
     </Formik>
