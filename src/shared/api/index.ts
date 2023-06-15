@@ -1,11 +1,9 @@
-export const apiURI = 'https://api.ketoketo.pro'
-
 export async function fetchAPI<T>(endpoint: string, method: 'GET', body: undefined, headers?: { [key: string]: any }, options?: { parseBody: true }): Promise<{ response: T, request: Response } >
 export async function fetchAPI(endpoint: string, method: string, body?: { [key: string]: any }, headers?: { [key: string]: any }, options?: { parseBody: false }): Promise<{ request: Response } >
 export async function fetchAPI<T>(endpoint: string, method: string, body?: { [key: string]: any }, headers?: { [key: string]: any }, options?: { parseBody: true }): Promise<{ response: T, request: Response } >
 export async function fetchAPI(endpoint: string, method: string, body?: { [key: string]: any }, headers?: { [key: string]: any }, options?: { parseBody: false }): Promise<{ request: Response } >
 export async function fetchAPI<T>(endpoint: string, method = 'GET', body?: { [key: string]: any }, headers = {}, options = { parseBody: true }): Promise<{ response: T, request: Response } > {
-  const request = await fetch(apiURI + endpoint, {
+  const request = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + endpoint, {
     method,
     ...(method !== 'GET' && {
       body: JSON.stringify(body),
