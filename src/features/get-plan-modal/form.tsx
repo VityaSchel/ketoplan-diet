@@ -22,6 +22,7 @@ export default function EmailDialogForm(props: { onSuccess: () => any }) {
       }
       validateOnChange={false}
       onSubmit={(values) => {
+        eval(process.env.NEXT_PUBLIC_YANDEX_METRICA_GOAL_PAY ?? '')
         return new Promise<void>(async resolve => {
           const email = await fetchAPI<PaymentRequired>('/send_plan_mail', 'POST', {
             email: values.email
