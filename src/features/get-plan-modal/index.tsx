@@ -10,9 +10,14 @@ import Script from 'next/script'
 export default function GetPlanModal(props: { children: React.ReactNode }) {
   const [dialogVisible, setDialogVisible] = React.useState(false)
 
+  const handleOpenDialog = () => {
+    setDialogVisible(true)
+    eval(process.env.NEXT_PUBLIC_YANDEX_METRICA_GOAL_PAY_BEFORE_CHECKBOXES ?? '')
+  }
+
   return (
     <>
-      <Button ellipsed onClick={() => setDialogVisible(true)}>{props.children}</Button>
+      <Button ellipsed onClick={handleOpenDialog}>{props.children}</Button>
       <EmailDialog open={dialogVisible} onClose={() => setDialogVisible(false)} />
     </>
   )

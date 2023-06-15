@@ -12,9 +12,16 @@ import WhatYouGet from '@/widgets/plan-result/ui/what-you-get'
 import Timer from '@/widgets/plan-result/ui/timer'
 import { ResumeContext } from '@/shared/context/resume-context'
 import Footer from '@/widgets/footer'
+import { AdvertisingCompanyResponse, PricesResponse } from '@/shared/api/ApiDefinitions'
+import { PricesContext } from '@/shared/context/prices-context'
+import { fetchAPI } from '@/shared/api'
+import { AdvertisingContext } from '@/shared/context/ads-context'
+import { hasCheckboxes } from '@x5io/ads_parameter'
 
 export default function PlanResultPage() {
   const [results, setResults] = React.useState<KetoPlanResume | null>(null)
+  const [prices, setPrices] = React.useState<PricesResponse | null>(null)
+  const [checkboxesVisible, setCheckboxesVisible] = React.useState<boolean>(true)
   const router = useRouter()
 
   React.useEffect(() => {
@@ -34,23 +41,43 @@ export default function PlanResultPage() {
     }
   }, [router])
 
+  React.useEffect(() => { getPrices() }, [])
+  React.useEffect(() => { typeof window !== 'undefined' && getAds() }, [typeof window, router.query.ads])
+
+  const getPrices = async () => {
+    const prices = await fetchAPI<PricesResponse>('/prices', 'GET')
+    setPrices(prices.response)
+  }
+
+  const getAds = async () => {
+    const id = router.query.ads
+    if (id !== undefined) {
+      const ads = await fetchAPI<AdvertisingCompanyResponse>(`/advertising_companies/${id}`, 'GET')
+      setCheckboxesVisible(hasCheckboxes(ads.response.status === 'active'))
+    }
+  }
+
   return (
     <>
       <Head
         title='Результат'
       />
-      {results !== null && (
-        <ResumeContext.Provider value={results}>
-          <PlanResultPageWrapper>
-            <MobileScreenTheme theme='light' />
-            <Timer />
-            <Fold />
-            <ResumeStatistics />
-            <PlanPromo />
-            <Reviews />
-            <WhatYouGet />
-          </PlanResultPageWrapper>
-        </ResumeContext.Provider>
+      {results !== null && prices !== null && (
+        <AdvertisingContext.Provider value={checkboxesVisible}>
+          <PricesContext.Provider value={prices}>
+            <ResumeContext.Provider value={results}>
+              <PlanResultPageWrapper>
+                <MobileScreenTheme theme='light' />
+                <Timer />
+                <Fold />
+                <ResumeStatistics />
+                <PlanPromo />
+                <Reviews />
+                <WhatYouGet />
+              </PlanResultPageWrapper>
+            </ResumeContext.Provider>
+          </PricesContext.Provider>
+        </AdvertisingContext.Provider>
       )}
       <Footer />
       <div style={{ height: 200 }} />

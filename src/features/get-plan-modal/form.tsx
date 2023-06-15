@@ -1,28 +1,43 @@
+import React from 'react'
 import styles from './styles.module.scss'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
 import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import Button from '@/shared/ui/button'
 import Input from '@/shared/ui/input'
-import { Formik } from 'formik'
-import * as Yup from 'yup'
 import { fetchAPI } from '@/shared/api'
 import { PayWidgetCloudpaymentsResponse, PaymentRequired, SendPlanMailBody } from '@/shared/api/ApiDefinitions'
+import { PricesContext } from '@/shared/context/prices-context'
+import Checkbox from '@x5io/flat-uikit/dist/checkbox'
+import { AdvertisingContext } from '@/shared/context/ads-context'
 
 export default function EmailDialogForm(props: { onSuccess: () => any }) {
+  const prices = React.useContext(PricesContext)
+  const checkboxesVisible = React.useContext(AdvertisingContext)
+
   return (
     <Formik
-      initialValues={{ email: '' }}
+      initialValues={{ email: '', firstCheckbox: false, secondCheckbox: false }}
       validationSchema={
         Yup.object({
           email: Yup.string()
             .email('Введите почту')
-            .required('Введите почту')
+            .required('Введите почту'),
+          ...(checkboxesVisible && {
+            firstCheckbox: Yup.bool()
+              .oneOf([true], ' ')
+              .required(' '),
+            secondCheckbox: Yup.bool()
+              .oneOf([true], ' ')
+              .required(' ')
+          })
         })
       }
       validateOnChange={false}
       onSubmit={(values) => {
-        eval(process.env.NEXT_PUBLIC_YANDEX_METRICA_GOAL_PAY ?? '')
+        eval(process.env.NEXT_PUBLIC_YANDEX_METRICA_GOAL_PAY_AFTER_CHECKBOXES ?? '')
         return new Promise<void>(async resolve => {
           const email = await fetchAPI<PaymentRequired>('/send_plan_mail', 'POST', {
             email: values.email
@@ -70,6 +85,26 @@ export default function EmailDialogForm(props: { onSuccess: () => any }) {
               error={errors.email}
               onEnter={() => handleSubmit()}
             />
+            {checkboxesVisible && (
+              <div className={styles.checkboxes}>
+                <Checkbox
+                  value={values.firstCheckbox}
+                  name='firstCheckbox'
+                  error={errors.firstCheckbox}
+                  onChange={handleChange}
+                >
+                  {prices.firstCheckbox}
+                </Checkbox>
+                <Checkbox
+                  value={values.secondCheckbox}
+                  name='secondCheckbox'
+                  error={errors.secondCheckbox}
+                  onChange={handleChange}
+                >
+                  {prices.secondCheckbox}
+                </Checkbox>
+              </div>
+            )}
           </DialogContent>
           <Button disabled={isSubmitting} onClick={() => handleSubmit()}>Отправить</Button>
         </>

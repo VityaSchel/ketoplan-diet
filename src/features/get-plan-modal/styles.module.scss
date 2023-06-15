@@ -54,6 +54,17 @@
         padding-bottom: 28px - 16px;
       }
     }
+
+    .checkboxes {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      
+      > div label {
+        font-family: 'Inter';
+      }
+    }
   }
 
   .resultDecoration {
