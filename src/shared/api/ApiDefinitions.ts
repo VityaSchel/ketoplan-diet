@@ -9,11 +9,16 @@
  * ---------------------------------------------------------------
  */
 
-export interface CloudpaymentsNotificationResponse {
-  code: number;
+export interface AdvertisingCompanyBody {
+  status: "active" | "canceled";
 }
 
-export interface CloudpaymentsPaymentResponse {
+export interface AdvertisingCompanyResponse {
+  id: number;
+  status: string;
+}
+
+export interface CheckoutCloudpaymentsPaymentResponse {
   amount: number;
   amountWithoutDiscount: number;
   cloudpaymentsPublicId: string;
@@ -21,6 +26,10 @@ export interface CloudpaymentsPaymentResponse {
   money: string;
   moneyWithoutDiscount: string;
   status: string;
+}
+
+export interface CloudpaymentsNotificationResponse {
+  code: number;
 }
 
 export interface CloudpaymentsReceipt {
@@ -96,11 +105,11 @@ export interface ErrorResponse {
   message: string;
 }
 
-export interface PayCloudpaymentsBody {
+export interface PayCheckoutCloudpaymentsBody {
   cryptogram: string;
 }
 
-export interface PayCloudpaymentsResponse {
+export interface PayCheckoutCloudpaymentsResponse {
   MD: string;
   PaReq: string;
   TermUrl: string;
@@ -114,12 +123,30 @@ export interface PayCloudpaymentsResponse {
   redirectUrl: string;
 }
 
+export interface PayWidgetCloudpaymentsResponse {
+  cloudpayments: {
+    accountId: string;
+    amount: number;
+    currency: string;
+    description: string;
+    invoiceId: string;
+    publicId: string;
+  };
+}
+
 export interface PaymentRequired {
   paymentId: string;
 }
 
 export interface PaymentSetEmailBody {
   email: string;
+}
+
+export interface PricesResponse {
+  amount: number;
+  amountWithoutDiscount: number;
+  firstCheckbox: string;
+  secondCheckbox: string;
 }
 
 export interface Principal {
@@ -133,6 +160,13 @@ export interface SendPlanMailBody {
 export interface SubscriptionUnsubscribeBody {
   firstNumbers: string;
   lastNumbers: string;
+}
+
+export interface WidgetCloudpaymentsPaymentResponse {
+  amount: number;
+  amountWithoutDiscount: number;
+  email: string;
+  status: string;
 }
 
 export type QueryParamsType = Record<string | number, any>;
@@ -352,6 +386,35 @@ export class HttpClient<SecurityDataType = unknown> {
  * KetoPlan
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+  advertisingCompanies = {
+    /**
+     * No description
+     *
+     * @tags advertising_company
+     * @name AdvertisingCompaniesList
+     * @request GET:/advertising_companies
+     */
+    advertisingCompaniesList: (params: RequestParams = {}) =>
+      this.request<AdvertisingCompanyResponse[], ErrorResponse>({
+        path: `/advertising_companies`,
+        method: "GET",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags advertising_companies
+     * @name AdvertisingCompaniesDetail
+     * @request GET:/advertising_companies/{id}
+     */
+    advertisingCompaniesDetail: (id: number, params: RequestParams = {}) =>
+      this.request<AdvertisingCompanyResponse, ErrorResponse>({
+        path: `/advertising_companies/${id}`,
+        method: "GET",
+        ...params,
+      }),
+  };
   cvBasedQuestionnaire = {
     /**
      * No description
@@ -462,13 +525,13 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * No description
      *
-     * @tags payment_cloudpayments
-     * @name CloudpaymentsDetail
-     * @request GET:/payments/{id}/cloudpayments
+     * @tags payment_cloudpayments_checkout
+     * @name CloudpaymentsCheckoutDetail
+     * @request GET:/payments/{id}/cloudpayments/checkout
      */
-    cloudpaymentsDetail: (id: string, params: RequestParams = {}) =>
-      this.request<CloudpaymentsPaymentResponse, ErrorResponse>({
-        path: `/payments/${id}/cloudpayments`,
+    cloudpaymentsCheckoutDetail: (id: string, params: RequestParams = {}) =>
+      this.request<CheckoutCloudpaymentsPaymentResponse, ErrorResponse>({
+        path: `/payments/${id}/cloudpayments/checkout`,
         method: "GET",
         ...params,
       }),
@@ -476,11 +539,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * No description
      *
-     * @tags payment_cloudpayments
-     * @name CloudpaymentsComplete3DsCreate
-     * @request POST:/payments/{id}/cloudpayments/complete3ds
+     * @tags payment_cloudpayments_checkout
+     * @name CloudpaymentsCheckoutComplete3DsCreate
+     * @request POST:/payments/{id}/cloudpayments/checkout/complete3ds
      */
-    cloudpaymentsComplete3DsCreate: (
+    cloudpaymentsCheckoutComplete3DsCreate: (
       id: string,
       data: {
         MD: number;
@@ -489,7 +552,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       params: RequestParams = {},
     ) =>
       this.request<any, void | ErrorResponse>({
-        path: `/payments/${id}/cloudpayments/complete3ds`,
+        path: `/payments/${id}/cloudpayments/checkout/complete3ds`,
         method: "POST",
         body: data,
         type: ContentType.FormData,
@@ -499,16 +562,48 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * No description
      *
-     * @tags payment_cloudpayments
-     * @name CloudpaymentsPayCreate
-     * @request POST:/payments/{id}/cloudpayments/pay
+     * @tags payment_cloudpayments_checkout
+     * @name CloudpaymentsCheckoutPayCreate
+     * @request POST:/payments/{id}/cloudpayments/checkout/pay
      */
-    cloudpaymentsPayCreate: (id: string, pay_payment_cloudpayments: PayCloudpaymentsBody, params: RequestParams = {}) =>
-      this.request<PayCloudpaymentsResponse, ErrorResponse>({
-        path: `/payments/${id}/cloudpayments/pay`,
+    cloudpaymentsCheckoutPayCreate: (
+      id: string,
+      pay_payment_cloudpayments: PayCheckoutCloudpaymentsBody,
+      params: RequestParams = {},
+    ) =>
+      this.request<PayCheckoutCloudpaymentsResponse, ErrorResponse>({
+        path: `/payments/${id}/cloudpayments/checkout/pay`,
         method: "POST",
         body: pay_payment_cloudpayments,
         type: ContentType.Json,
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags payment_cloudpayments_widget
+     * @name CloudpaymentsWidgetDetail
+     * @request GET:/payments/{id}/cloudpayments/widget
+     */
+    cloudpaymentsWidgetDetail: (id: string, params: RequestParams = {}) =>
+      this.request<WidgetCloudpaymentsPaymentResponse, ErrorResponse>({
+        path: `/payments/${id}/cloudpayments/widget`,
+        method: "GET",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags payment_cloudpayments_widget
+     * @name CloudpaymentsWidgetPayDetail
+     * @request GET:/payments/{id}/cloudpayments/widget/pay
+     */
+    cloudpaymentsWidgetPayDetail: (id: string, params: RequestParams = {}) =>
+      this.request<PayWidgetCloudpaymentsResponse, ErrorResponse>({
+        path: `/payments/${id}/cloudpayments/widget/pay`,
+        method: "GET",
         ...params,
       }),
 
@@ -525,6 +620,21 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         method: "POST",
         body: payment_set_email,
         type: ContentType.Json,
+        ...params,
+      }),
+  };
+  prices = {
+    /**
+     * No description
+     *
+     * @tags prices
+     * @name PricesList
+     * @request GET:/prices
+     */
+    pricesList: (params: RequestParams = {}) =>
+      this.request<PricesResponse, ErrorResponse>({
+        path: `/prices`,
+        method: "GET",
         ...params,
       }),
   };
@@ -552,14 +662,12 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @tags subscription
      * @name UnsubscribeCreate
      * @request POST:/subscriptions/unsubscribe
-     * @secure
      */
     unsubscribeCreate: (subscription_unsubscribe: SubscriptionUnsubscribeBody, params: RequestParams = {}) =>
       this.request<void, ErrorResponse>({
         path: `/subscriptions/unsubscribe`,
         method: "POST",
         body: subscription_unsubscribe,
-        secure: true,
         type: ContentType.Json,
         ...params,
       }),

@@ -6,8 +6,8 @@ import EmailDialogForm from './form'
 import EmailDialogResult from './result'
 import { MdClose } from 'react-icons/md'
 import { Payment, PaymentRefMethods } from '@/features/get-plan-modal/payment'
-import { CloudpaymentsPaymentResponse } from '@/shared/api/ApiDefinitions'
 import { fetchAPI } from '@/shared/api'
+import { CheckoutCloudpaymentsPaymentResponse } from '@/shared/api/ApiDefinitions'
 
 export default function GetPlanModal(props: { children: React.ReactNode }) {
   const [dialogVisible, setDialogVisible] = React.useState(false)
@@ -32,8 +32,7 @@ export function EmailDialog(props: { open: boolean, onClose: () => any }) {
 
   const handlePayment = async (paymentId: string, email: string) => {
     if(!paymentRef.current) throw new Error('Payment ref is undefined')
-    const subject = await fetchAPI<CloudpaymentsPaymentResponse>(`/payments/${paymentId}/cloudpayments`, 'GET')
-    console.log('email',email)
+    const subject = await fetchAPI<CheckoutCloudpaymentsPaymentResponse>(`/payments/${paymentId}/cloudpayments/checkout`, 'GET')
     paymentRef.current.open(paymentId, email, { 
       publicID: subject.response.cloudpaymentsPublicId, 
       name: 'Кетоплановая диета', 
