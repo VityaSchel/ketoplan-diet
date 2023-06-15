@@ -17,10 +17,14 @@ export default function PlanPage() {
         title='Опрос'
       />
       <PlanFormContainer 
-        onSubmit={results => router.push({
-          pathname: '/plan/result',
-          query: { result: JSON.stringify(results) }
-        }, '/plan/result')} 
+        onSubmit={results => {
+          const resultsSerialized = JSON.stringify(results)
+          window.localStorage.setItem('results_cached', resultsSerialized)
+          router.push({
+            pathname: '/plan/result',
+            query: { result: resultsSerialized }
+          }, '/plan/result')
+        }}
       />
       <Footer />
     </>

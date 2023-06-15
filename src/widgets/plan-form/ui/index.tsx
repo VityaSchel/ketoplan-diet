@@ -10,19 +10,37 @@ import { CvBasedQuestionnaireBody, CvBasedQuestionnaireResponse } from '@/shared
 export function PlanFormContainer({ 
   onSubmit 
 }: { onSubmit: (results: KetoPlanResume) => any }) {
+  
+  const getCv = (values: PlanFormValuesValidated) => new Promise<KetoPlanResume>(async resolve => {
+    const result = await fetchAPI<CvBasedQuestionnaireResponse>('/cv_based_questionnaire', 'POST', {
+      activityInterval: values.activityInterval,
+      age: values.age,
+      badHabits: values.badHabits,
+      currentWeight: values.currentWeight,
+      dayType: values.dayType,
+      gender: values.gender,
+      height: values.height,
+      otherFood: values.otherFood,
+      proteinSources: values.proteinSources,
+      targetWeight: values.targetWeight,
+      vegetables: values.vegetables
+    } satisfies CvBasedQuestionnaireBody)
+    if (result.request.status === 200) {
+      resolve({
+        imt: result.response.imt,
+        mAge: result.response.metabolicAge,
+        recommendedKcal: { min: result.response.recommendedAmountKcal, max: result.response.recommendedAmountKcal + 100 },
+        recommendedWater: result.response.recommendedAmountWater,
+        achievableWeightIn28Days: result.response.achievableWeightAfter28Days,
+        foodType: result.response.foodType
+      })
+    } else {
+      throw new Error('Expected 200 status code from /cv_based_questionnaire')
+    }
+  })
+
   return (
     <>
-      {/* FOR DEVELOPMENT
-      <button style={{ zIndex: 100, position: 'absolute' }} onClick={() => {
-        onSubmit({
-          imt: 20.29,
-          mAge: 37,
-          recommendedKcal: { min: 1300, max: 1400 },
-          recommendedWater: 1.8,
-          achievableWeightIn28Days: 55
-        })
-      }}>Skip</button>
-       FOR DEVELOPMENT */}
       <Formik
         initialValues={planFormValues}
         validate={async (values) => {
@@ -38,40 +56,21 @@ export function PlanFormContainer({
             }
           }
         }}
-        onSubmit={async (formikValues: PlanFormValues, { setSubmitting }) => {
-          const values = formikValues as PlanFormValuesValidated
-          setSubmitting(true)
-          try {
-            const result = await fetchAPI<CvBasedQuestionnaireResponse>('/cv_based_questionnaire', 'POST', {
-              activityInterval: values.activityInterval,
-              age: values.age,
-              badHabits: values.badHabits,
-              currentWeight: values.currentWeight,
-              dayType: values.dayType,
-              gender: values.gender,
-              height: values.height,
-              otherFood: values.otherFood,
-              proteinSources: values.proteinSources,
-              targetWeight: values.targetWeight,
-              vegetables: values.vegetables
-            } satisfies CvBasedQuestionnaireBody)
-            if(result.request.status === 200) {
-              onSubmit({
-                imt: result.response.imt,
-                mAge: result.response.metabolicAge,
-                recommendedKcal: { min: result.response.recommendedAmountKcal, max: result.response.recommendedAmountKcal+100 },
-                recommendedWater: result.response.recommendedAmountWater,
-                achievableWeightIn28Days: result.response.achievableWeightAfter28Days,
-                foodType: result.response.foodType
-              })
-            } else {
-              throw new Error('Expected 200 status code from /cv_based_questionnaire')
+        onSubmit={async (formikValues: PlanFormValues) => {
+          return new Promise<void>(async resolve => {
+            const values = formikValues as PlanFormValuesValidated
+            try {
+              const [results] = await Promise.all([
+                getCv(values),
+                new Promise(resolve => setTimeout(resolve, 5000))
+              ])
+              onSubmit(results)
+            } catch(e) {
+              console.error(e)
+              alert('Что-то пошло не так. Пожалуйста, вернитесь на эту страницу позже.')
+              resolve()
             }
-          } catch(e) {
-            console.error(e)
-            alert('Что-то пошло не так. Пожалуйста, вернитесь на эту страницу позже.')
-            setSubmitting(false)
-          }
+          })
         }}
       >
         {props => <PlanForm formik={props as any} />}

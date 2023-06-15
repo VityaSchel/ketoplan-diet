@@ -18,9 +18,12 @@ export default function PlanResultPage() {
   const router = useRouter()
 
   React.useEffect(() => {
+    const resultCached = window.localStorage.getItem('results_cached')
     const resultQuery = router.query.result
     try {
-      if(typeof resultQuery === 'string') {
+      if (typeof resultCached === 'string') {
+        setResults(JSON.parse(resultCached) as KetoPlanResume)
+      } else if (typeof resultQuery === 'string') {
         setResults(JSON.parse(resultQuery) as KetoPlanResume)
       } else {
         router.push('/plan/quiz')
