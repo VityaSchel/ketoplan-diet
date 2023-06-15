@@ -1,4 +1,4 @@
-export const apiURI = 'https://api.prank.guru'
+export const apiURI = 'https://api.ketoketo.pro'
 
 export async function fetchAPI<T>(endpoint: string, method: 'GET', body: undefined, headers?: { [key: string]: any }, options?: { parseBody: true }): Promise<{ response: T, request: Response } >
 export async function fetchAPI(endpoint: string, method: string, body?: { [key: string]: any }, headers?: { [key: string]: any }, options?: { parseBody: false }): Promise<{ request: Response } >

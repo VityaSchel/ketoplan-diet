@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "swagger-typescript-api -p https://api.prank.guru/swagger.json -o ./src/shared/api/ -n ApiDefinitions.ts"
+    "codegen": "swagger-typescript-api -p https://api.ketoketo.pro/swagger.json -o ./src/shared/api/ -n ApiDefinitions.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
