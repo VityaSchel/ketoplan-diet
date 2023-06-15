@@ -103,7 +103,7 @@ export default function Screen8(props: { onContinue: () => any, onGoBack: () => 
       </div>
       <div className={styles.actions}>
         <Button variant='contained' onClick={props.onContinue} disabled={isSubmitDisabled || formik.isSubmitting}>{formik.isSubmitting ? <CircularProgress size={30} /> : 'Продолжить'}</Button>
-        <Button variant='text' onClick={props.onGoBack} disabled={isSubmitDisabled}><GoBackArrow /> Назад</Button>
+        <Button variant='text' onClick={props.onGoBack} disabled={formik.isSubmitting}><GoBackArrow /> Назад</Button>
       </div>
       <LoadingResults open={formik.isSubmitting} />
     </PlanFormScreen>
