@@ -134,7 +134,7 @@ build_ketoketopro:
     NEXT_PUBLIC_COMPANY_NAME: ИП Круковский Андрей Николаевич
     NEXT_PUBLIC_COMPANY_INN: 780535623621
     NEXT_PUBLIC_COMPANY_OGRNIP: 322784700279882
-    NEXT_PUBLIC_YANDEX_METRICA_ID: 93986312
+    NEXT_PUBLIC_YANDEX_METRICA_ID: 93988448
     NEXT_PUBLIC_YANDEX_METRICA_GOAL_MALE: "console.log('YM metrica: goal male')"
     NEXT_PUBLIC_YANDEX_METRICA_GOAL_FEMALE: "console.log('YM metrica: goal female')"
     NEXT_PUBLIC_YANDEX_METRICA_GOAL_PAY_BEFORE_CHECKBOXES: "console.log('YM metrica: goal pay after checkboxes')"
