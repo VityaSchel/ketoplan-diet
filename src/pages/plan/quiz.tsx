@@ -10,6 +10,8 @@ Yup.setLocale(yupRuLocale)
 export default function PlanPage() {
   const router = useRouter()
 
+  const adsParameter = typeof router.query.ads === 'string' ? `?ads=${router.query.ads}` : ''
+
   return (
     <>
       <Head 
@@ -21,8 +23,8 @@ export default function PlanPage() {
           window.localStorage.setItem('results_cached', resultsSerialized)
           router.push({
             pathname: '/plan/result',
-            query: { result: resultsSerialized }
-          }, '/plan/result')
+            query: { result: resultsSerialized, ads: router.query.ads }
+          }, '/plan/result' + adsParameter)
         }}
       />
     </>
