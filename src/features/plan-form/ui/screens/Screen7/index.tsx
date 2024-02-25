@@ -42,7 +42,7 @@ export default function Screen7(props: { onContinue: () => any, onGoBack: () => 
         value={formik.values.badHabits}
         onChange={newValue => {
           if(newValue.includes('NONE')) {
-            formik.setFieldValue('badHabits', [])
+              formik.setFieldValue('badHabits', ['NONE'])
           } else {
             formik.setFieldValue('badHabits', newValue)
           }
