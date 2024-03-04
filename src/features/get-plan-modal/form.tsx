@@ -93,7 +93,7 @@ export default function EmailDialogForm(props: { onSuccess: () => any }) {
                   error={errors.firstCheckbox}
                   onChange={handleChange}
                 >
-                  {prices.firstCheckbox}
+                    <p dangerouslySetInnerHTML={{__html: prices.firstCheckbox ?? ''}} />
                 </Checkbox>
                 <Checkbox
                   value={values.secondCheckbox}
@@ -101,7 +101,7 @@ export default function EmailDialogForm(props: { onSuccess: () => any }) {
                   error={errors.secondCheckbox}
                   onChange={handleChange}
                 >
-                  {prices.secondCheckbox}
+                    <p dangerouslySetInnerHTML={{__html: prices.secondCheckbox ?? ''}} />
                 </Checkbox>
               </div>
             )}
