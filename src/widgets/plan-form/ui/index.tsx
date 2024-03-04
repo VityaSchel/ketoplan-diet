@@ -12,20 +12,30 @@ export function PlanFormContainer({
 }: { onSubmit: (results: KetoPlanResume) => any }) {
   
   const getCv = (values: PlanFormValuesValidated) => new Promise<KetoPlanResume>(async resolve => {
-    const result = await fetchAPI<CvBasedQuestionnaireResponse>('/cv_based_questionnaire', 'POST', {
-      activityInterval: values.activityInterval,
-      age: values.age,
-      badHabits: values.badHabits,
-      currentWeight: values.currentWeight,
-      dayType: values.dayType,
-      gender: values.gender,
-      height: values.height,
-      otherFood: values.otherFood,
-      proteinSources: values.proteinSources,
-      targetWeight: values.targetWeight,
-      vegetables: values.vegetables
-    } satisfies CvBasedQuestionnaireBody)
-    if (result.request.status === 200) {
+    // const result = await fetchAPI<CvBasedQuestionnaireResponse>('/cv_based_questionnaire', 'POST', {
+    //   activityInterval: values.activityInterval,
+    //   age: values.age,
+    //   badHabits: values.badHabits,
+    //   currentWeight: values.currentWeight,
+    //   dayType: values.dayType,
+    //   gender: values.gender,
+    //   height: values.height,
+    //   otherFood: values.otherFood,
+    //   proteinSources: values.proteinSources,
+    //   targetWeight: values.targetWeight,
+    //   vegetables: values.vegetables
+    // } satisfies CvBasedQuestionnaireBody)
+    // if (result.request.status === 200) {
+    const result = {
+      response: {
+        imt: Math.round(Math.random() * 10 + 20),
+        metabolicAge:  Math.round(Math.random() * 10 + 20),
+        recommendedAmountKcal: Math.round(Math.random() * 3000 + 1000),
+        recommendedAmountWater:  Math.round(Math.random() * 3 + 1),
+        achievableWeightAfter28Days:  Math.round(Math.random() * 5 + 60),
+        foodType: (['dump', 'gain'] as const)[Math.floor(Math.random() * 2)]
+      } satisfies CvBasedQuestionnaireResponse
+    }
       resolve({
         imt: result.response.imt,
         mAge: result.response.metabolicAge,
@@ -34,9 +44,9 @@ export function PlanFormContainer({
         achievableWeightIn28Days: result.response.achievableWeightAfter28Days,
         foodType: result.response.foodType
       })
-    } else {
-      throw new Error('Expected 200 status code from /cv_based_questionnaire')
-    }
+    // } else {
+    //   throw new Error('Expected 200 status code from /cv_based_questionnaire')
+    // }
   })
 
   return (
@@ -60,11 +70,8 @@ export function PlanFormContainer({
           return new Promise<void>(async resolve => {
             const values = formikValues as PlanFormValuesValidated
             try {
-              const [results] = await Promise.all([
-                getCv(values),
-                new Promise(resolve => setTimeout(resolve, 5000))
-              ])
-              onSubmit(results)
+              await new Promise(resolve => setTimeout(resolve, 5000))
+              onSubmit(await getCv(values))
             } catch(e) {
               console.error(e)
               alert('Что-то пошло не так. Пожалуйста, вернитесь на эту страницу позже.')

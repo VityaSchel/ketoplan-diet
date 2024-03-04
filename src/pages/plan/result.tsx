@@ -16,7 +16,7 @@ import { AdvertisingCompanyResponse, PricesResponse } from '@/shared/api/ApiDefi
 import { PricesContext } from '@/shared/context/prices-context'
 import { fetchAPI } from '@/shared/api'
 import { AdvertisingContext } from '@/shared/context/ads-context'
-import { hasCheckboxes } from '@x5io/ads_parameter'
+// import { hasCheckboxes } from '@x5io/ads_parameter'
 
 export default function PlanResultPage() {
   const [results, setResults] = React.useState<KetoPlanResume | null>(null)
@@ -45,15 +45,21 @@ export default function PlanResultPage() {
   React.useEffect(() => { typeof window !== 'undefined' && getAds() }, [typeof window, router.query.ads])
 
   const getPrices = async () => {
-    const prices = await fetchAPI<PricesResponse>('/prices', 'GET')
-    setPrices(prices.response)
+    // const prices = await fetchAPI<PricesResponse>('/prices', 'GET')
+    const prices: PricesResponse = {
+      amount: 699,
+      amountWithoutDiscount: 1999,
+      firstCheckbox: 'Я согласен на обработку персональных данных',
+      secondCheckbox: 'Я согласен на условия оферты',
+    }
+    setPrices(prices)
   }
 
   const getAds = async () => {
     const id = router.query.ads
     if (id !== undefined) {
-      const ads = await fetchAPI<AdvertisingCompanyResponse>(`/advertising_companies/${id}`, 'GET')
-      setCheckboxesVisible(hasCheckboxes(ads.response.status === 'active'))
+      // const ads = await fetchAPI<AdvertisingCompanyResponse>(`/advertising_companies/${id}`, 'GET')
+      setCheckboxesVisible(/*hasCheckboxes(ads.response.status === 'active')*/ true)
     }
   }
 
@@ -81,7 +87,7 @@ export default function PlanResultPage() {
       )}
       <Footer />
       <div style={{ height: 200 }} />
-      <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://vk.com/js/api/openapi.js?169',t.onload=function(){VK.Retargeting.Init("${process.env.NEXT_PUBLIC_VK_METRICA_RESULT}"),VK.Retargeting.Hit()},document.head.appendChild(t)}();` }}></script><noscript dangerouslySetInnerHTML={{ __html: `<img src="https://vk.com/rtrg?p=${process.env.NEXT_PUBLIC_VK_METRICA_RESULT}" style="position:fixed; left:-999px;" alt=""/>` }}></noscript>
+      {/* <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://vk.com/js/api/openapi.js?169',t.onload=function(){VK.Retargeting.Init("${process.env.NEXT_PUBLIC_VK_METRICA_RESULT}"),VK.Retargeting.Hit()},document.head.appendChild(t)}();` }}></script><noscript dangerouslySetInnerHTML={{ __html: `<img src="https://vk.com/rtrg?p=${process.env.NEXT_PUBLIC_VK_METRICA_RESULT}" style="position:fixed; left:-999px;" alt=""/>` }}></noscript> */}
     </>
   )
 }

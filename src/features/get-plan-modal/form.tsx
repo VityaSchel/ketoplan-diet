@@ -39,28 +39,27 @@ export default function EmailDialogForm(props: { onSuccess: () => any }) {
       onSubmit={(values) => {
         eval(process.env.NEXT_PUBLIC_YANDEX_METRICA_GOAL_PAY_AFTER_CHECKBOXES ?? '')
         return new Promise<void>(async resolve => {
-          const email = await fetchAPI<PaymentRequired>('/send_plan_mail', 'POST', {
-            email: values.email
-          } satisfies SendPlanMailBody)
+          // const email = await fetchAPI<PaymentRequired>('/send_plan_mail', 'POST', {
+          //   email: values.email
+          // } satisfies SendPlanMailBody)
 
-          const paymentId = email.response.paymentId
+          const paymentId = ''//email.response.paymentId
 
-          // @ts-expect-error idk how to fix this
-          await fetchAPI<PayWidgetCloudpaymentsResponse>(
-            `/payments/${paymentId}/set-email`, 'POST', { email: values.email }, {}, { parseBody: false })
-          const request = await fetchAPI<PayWidgetCloudpaymentsResponse>(`/payments/${paymentId}/cloudpayments/widget/pay`, 'GET')
-          // @ts-expect-error CP does not have types
-          const widget = new cp.CloudPayments()
-          widget.pay('charge',
-            request.response.cloudpayments,
-            {
-              onSuccess: () => {
-                props.onSuccess()
-                resolve()
-              },
-              onFail: () => { resolve() }
-            }
-          )
+          // await fetchAPI<PayWidgetCloudpaymentsResponse>(
+          //   `/payments/${paymentId}/set-email`, 'POST', { email: values.email }, {}, { parseBody: false })
+          // const request = await fetchAPI<PayWidgetCloudpaymentsResponse>(`/payments/${paymentId}/cloudpayments/widget/pay`, 'GET')
+          // // @ts-expect-error CP does not have types
+          // const widget = new cp.CloudPayments()
+          // widget.pay('charge',
+          //   request.response.cloudpayments,
+          //   {
+          //     onSuccess: () => {
+          //       props.onSuccess()
+          //       resolve()
+          //     },
+          //     onFail: () => { resolve() }
+          //   }
+          // )
         })
       }}
     >
